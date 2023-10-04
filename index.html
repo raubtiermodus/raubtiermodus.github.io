@@ -74,6 +74,9 @@
         text-align: center;
       }
       .text {
+        background-color: transparent;
+        border: none;
+        font-weight: bold;
         font-size: 5vw;
         animation: fadein 1s ease;
         position: fixed;
@@ -136,7 +139,7 @@
             Math.floor(Math.random() * (cites.length - 1))
           ];
           last = cite;
-          const text = document.createElement("div");
+          const text = document.createElement("button");
           const span = document.createElement("span");
           text.appendChild(span);
           text.classList.add("text");
