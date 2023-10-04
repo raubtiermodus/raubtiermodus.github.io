@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raubtiermodus</title>
+    <style>
+      @keyframes rainbow {
+        0% {
+          color: black;
+        }
+        20% {
+          color: red;
+        }
+        50% {
+          color: blue;
+        }
+        80% {
+          color: indigo;
+        }
+        100% {
+          color: black;
+        }
+      }
+      @keyframes fromleft {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes fadein {
+        0% {
+          transform: translate(-50%, -100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(-50%, -50%);
+          opacity: 1;
+        }
+      }
+      @keyframes fadeout {
+        0% {
+          transform: translate(-50%, -50%);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, 0);
+          opacity: 0;
+        }
+      }
+      * {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        text-align: center;
+      }
+      p,
+      img {
+        opacity: 0;
+        transition: all 1s ease;
+        transform: translate(-50%, 20%) scale(0.8);
+        position: fixed;
+        width: 50%;
+        left: 50%;
+        border-radius: 100%;
+      }
+      p {
+        transform: scale(0.9) translateY(-100%);
+        font-size: 2.5vw;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+      }
+      .text {
+        font-size: 5vw;
+        animation: fadein 1s ease;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: max-content;
+        margin: 0;
+        transition: all 1s ease;
+        cursor: default;
+      }
+      .text:hover > span {
+        animation: rainbow 3s linear infinite;
+      }
+      /*.text:active {
+        color: red;
+      }
+      
+      text::before {
+        content: "";
+        transition: all 1s ease;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 10px;
+        width: 0;
+        border-radius: 10px;
+        background-color: black;
+      }
+      text:hover::before {
+        width: 100%;
+      }*/
+      div:has(.text:hover) p,
+      div:has(.text:active) p {
+        opacity: 1;
+        transform: none;
+      }
+      div:has(.text:hover) img,
+      div:has(.text:active) img {
+        opacity: 0.5;
+        transform: translate(-50%, 0) scale(1);
+      }
+      .out {
+        animation: fadeout 1s ease;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", () => {
+        const cites = [
+          "Du kannst es doch.<br>Meld dich doch mal.",
+          "ABSOLUT RICHTIG!",
+          "RAUBTIERMODUS",
+          "NICHT ANHOPSEN!",
+          "AUF DIE BOGENLAMPE ACHTEN!",
+        ];
+        let last = cites[Math.floor(Math.random() * cites.length)];
+        const next = () => {
+          console.log(last);
+          const cite = cites.filter((c) => c !== last)[
+            Math.floor(Math.random() * (cites.length - 1))
+          ];
+          last = cite;
+          const text = document.createElement("div");
+          const span = document.createElement("span");
+          text.appendChild(span);
+          text.classList.add("text");
+          span.innerHTML = cite;
+          div.appendChild(text);
+        };
+        const div = document.querySelector("div");
+        setInterval(() => {
+          div.querySelectorAll(".text").forEach((h) => {
+            h.classList.add("out");
+            setTimeout(() => h.remove(), 1000);
+          });
+          setTimeout(() => next(), 1000);
+        }, 4000);
+        next();
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <img src="./eberle.jpg" alt="Eberle" />
+      <p>Abonniert MCTobi auf YouTube !!</p>
+    </div>
+  </body>
+</html>
