@@ -80,3 +80,16 @@ h1 {
   -webkit-mask-image: url('/github.svg');
   background-color: var(--fg);
 }
+
+.box {
+  border: 1px solid transparent;
+  box-shadow: 0 0 20px 0 #e6e6e6;
+  padding: 15px;
+  border-radius: 10px;
+}
+.box.gold {
+  box-shadow: 0 0 20px 0 orange;
+  border-color: darkorange;
+  color: darkgoldenrod;
+  background-color: rgba(255, 215, 0, 0.85);
+}
