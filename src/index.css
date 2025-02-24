@@ -1,32 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  font-family: Calibri, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --fg: black;
 }
 
 body {
   margin: 0;
-  display: flex;
   min-height: 100vh;
-  align-items: center;
-  justify-content: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 a {
-  transition: opacity .3s;
+  transition: all .3s;
+}
+
+a.link {
+  position: relative;
+}
+a.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: var(--fg);
+  translate: 0 3px;
+  transition: transform .3s;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+a.link:hover::after, a.link.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

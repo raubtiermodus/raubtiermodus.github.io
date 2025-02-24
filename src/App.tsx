@@ -1,16 +1,17 @@
-import logo from '/icon.svg'
+import {Header} from "./Header.tsx";
+import {Footer} from "./Footer.tsx";
 
 function App() {
-  return (
-    <div className="flex items-center flex-col gap-5">
-        <img src={logo} width={300} height={300}  alt="" />
-        <h1 className="text-center">Raubtiermodus</h1>
-        <p className="opacity-60 text-xl">website under construction</p>
-        <a href="https://robotics.gymnasium-weingarten.de/" className="text-red-600 text-xl hover:opacity-60">
-            →&nbsp;&nbsp;Robotics Gymnasium Weingarten
-        </a>
-    </div>
-  )
+    return (<>
+            <Header/>
+            <div className="h-[2000px]"></div>
+            <div className="scroll-target h-[100vh] bg-blue-600" id="hardware"></div>
+            <div className="scroll-target h-[100vh] bg-green-600" id="software"></div>
+            <div className="scroll-target h-[100vh] bg-orange-600" id="erfolge"></div>
+            <div className="scroll-target h-[100vh]" id=""></div>
+            <Footer />
+        </>
+    )
 }
 
 export default App
