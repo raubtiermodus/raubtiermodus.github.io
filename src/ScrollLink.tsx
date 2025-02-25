@@ -6,11 +6,10 @@ export const useScrollTarget = () => {
         const handler = () => {
             const targets = document.querySelectorAll(".scroll-target");
             let cur: Element | null = null;
-            const height = window.innerHeight;
             for(const target of targets) {
-                cur = target;
                 const {top} = target.getBoundingClientRect()
-                if(top > -(height * .75)) break
+                if(top >= 94) break
+                cur = target;
             }
             setActive(cur);
         }

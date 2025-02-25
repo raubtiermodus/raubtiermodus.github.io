@@ -55,9 +55,9 @@ a {
   padding: .75rem;
 }
 .scroll-target {
-  height: 100vh;
+  min-height: 100vh;
 }
-* {
+.area {
   color: var(--fg);
 }
 a:not(.link):hover {
@@ -69,6 +69,7 @@ h1 {
 }
 #header {
   transition: all .5s;
+  z-index: 1000;
 }
 
 .github {
@@ -84,12 +85,60 @@ h1 {
 .box {
   border: 1px solid transparent;
   box-shadow: 0 0 20px 0 #e6e6e6;
-  padding: 15px;
+  padding: 5px 10px;
   border-radius: 10px;
+  background-color: var(--bg);
+  width: max-content;
 }
 .box.gold {
   box-shadow: 0 0 20px 0 orange;
   border-color: darkorange;
   color: darkgoldenrod;
   background-color: rgba(255, 215, 0, 0.85);
+}
+.canvas .box {
+  transform: translate3d(20px, calc(-50%), 0);
+  text-align: left;
+  background: #181c20;
+  color: #c3c3c3;
+  border-radius: 5px;
+  user-select: none;
+  box-shadow: none;
+}
+
+.canvas .box::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  height: 2px;
+  width: 30px;
+  background: #181c20;
+  translate: 0 -50%;
+  outline: 1px solid white;
+}
+
+.canvas .box .title {
+  color: white;
+}
+.html {
+  transition: all .5s;
+}
+@starting-style {
+  .html {
+    opacity: 0;
+  }
+}
+.occluded {
+  opacity: 0;
+}
+
+.icon {
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--fg);
 }

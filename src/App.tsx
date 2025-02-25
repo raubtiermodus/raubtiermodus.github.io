@@ -1,6 +1,6 @@
 import {Header} from "./Header.tsx";
 import {Footer} from "./Footer.tsx";
-import {Hardware} from "./Hardware.tsx";
+import {Hardware} from "./hardware/Hardware.tsx";
 import {Software} from "./Software.tsx";
 import {Erfolge} from "./Erfolge.tsx";
 
