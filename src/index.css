@@ -72,16 +72,6 @@ h1 {
   z-index: 1000;
 }
 
-.github {
-  mask-size: 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-image: url('/github.svg');
-  -webkit-mask-image: url('/github.svg');
-  background-color: var(--fg);
-}
-
 .box {
   border: 1px solid transparent;
   box-shadow: 0 0 20px 0 #e6e6e6;
@@ -99,11 +89,10 @@ h1 {
 .canvas .box {
   transform: translate3d(20px, calc(-50%), 0);
   text-align: left;
-  background: #181c20;
-  color: #c3c3c3;
   border-radius: 5px;
   user-select: none;
   box-shadow: none;
+  border: 1px solid gray;
 }
 
 .canvas .box::before {
@@ -118,9 +107,6 @@ h1 {
   outline: 1px solid white;
 }
 
-.canvas .box .title {
-  color: white;
-}
 .html {
   transition: all .5s;
 }
