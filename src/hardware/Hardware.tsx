@@ -4,7 +4,7 @@ import {Model} from "./Model.tsx";
 
 export const Hardware: FC = () => {
     return <>
-        <div className="scroll-target !p-0 h-[300vh]" id="hardware">
+        <div className="scroll-target !p-0 h-[380vh]" id="hardware">
             <div className="sticky h-[100vh] top-0 canvas">
                 <Canvas>
                     <Model/>

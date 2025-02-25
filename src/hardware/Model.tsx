@@ -1,11 +1,12 @@
 import {ComponentProps, FC, ReactNode, useEffect, useRef, useState} from "react";
 import {useThree} from "@react-three/fiber";
-import {Html, PresentationControls, useGLTF} from "@react-three/drei";
+import {CameraControls, Html, PresentationControls, useGLTF} from "@react-three/drei";
 import {Box} from "../Box.tsx";
 
 const Tag: FC<ComponentProps<typeof Box> & {
     position: [number, number, number];
     occlude?: boolean;
+    dir?: string;
 }> = (props) => {
     const occlude = false; //props.occlude ?? true;
     const [hidden, setHidden] = useState(false);
@@ -15,7 +16,7 @@ const Tag: FC<ComponentProps<typeof Box> & {
         onOcclude={setHidden}
         className={"html " + ((hidden && occlude) ? "occluded" : "")}
     >
-        <Box {...props} />
+        <Box {...props} className={`${props.className || ""} ${props.dir || "r"}`} />
     </Html>
 }
 const merge = (t1: Transform | null | undefined, t2: Transform | null | undefined, part: number) => {
@@ -25,7 +26,7 @@ const merge = (t1: Transform | null | undefined, t2: Transform | null | undefine
 
 const top: Transform = [Math.PI / 2, 0, 0];
 const front: Transform = [Math.PI / 8, -Math.PI / 4, 0];
-const back: Transform = [Math.PI / 8, Math.PI / 4, 0];
+const back: Transform = [0, Math.PI / 4, 0];
 type Transform = [number, number, number]
 
 interface ScrollState {
@@ -47,7 +48,7 @@ const tagsFront = <>
     <Tag title="Abstandssensor" subtitle="HC-SR04" position={[.35, -.25, 0]}>
         Raum verlassen
     </Tag>
-    <Tag title="Beschleunigungssensor" subtitle="MPU 6050" position={[.33, .3, 0]}>
+    <Tag dir="t" title="Beschleunigungssensor" subtitle="MPU 6050" position={[.33, .3, 0]}>
         Rampe erkennen
     </Tag>
     <Tag title="USB-Kamera" subtitle="Fischertechnik" position={[.4, .3, 0]}>
@@ -62,40 +63,58 @@ const elements: ScrollState[] = [
         scale: [.9, .9, .9]
     },
     {
-        scroll: 200,
+        scroll: .2,
         rotation: top
     },
     {
-        scroll: 600,
+        scroll: .6,
         rotation: front,
         tags: tagsFront
     },
     {
-        scroll: 1000,
+        scroll: 1,
         rotation: front
     },
     {
-        scroll: 1300,
+        scroll: 1.3,
         rotation: back,
         tags: <>
             <Tag title="OmniWheels" subtitle="Lego" position={[-.2, -.275, .25]}>
                 Saubere Lenkung
             </Tag>
-            <Tag title="USB-Kamera" subtitle="Fischertechnik" position={[-.35, -.25, 0]}>
+            <Tag dir="l" title="USB-Kamera" subtitle="Fischertechnik" position={[-.3, -.25, 0]}>
                 Kugeln erkennen
+            </Tag>
+            <Tag title="Greifzange" subtitle="3D-Druck" position={[-.45, 0, 0]}>
+                Kugeln halt greifen
             </Tag>
         </>
     },
     {
-        scroll: 1700,
+        scroll: 1.7,
         rotation: back,
     },
     {
-        scroll: 2000,
+        scroll: 2,
+        rotation: top,
+        tags: <>
+            <Tag subtitle="Raspberry Pi 5 (8 GB Ram)" title="Haupt-Controller" position={[0, 0, 0]}>
+            </Tag>
+            <Tag subtitle="Arduino Nano" title="Micro-controller" dir="b" position={[-.2, .1, .22]}>
+                Auslesen der Abstandssensoren
+            </Tag>
+        </>
+    },
+    {
+        scroll: 2.4,
         rotation: top,
     },
     {
-        scroll: 2300,
+        scroll: 2.7,
+        rotation: top,
+    },
+    {
+        scroll: 3,
         rotation: top,
         position: [2, 0, 0]
     }
@@ -111,7 +130,7 @@ export const Model: FC = () => {
     useEffect(() => {
         if (meshRef.current) {
             const max = Math.min(viewport.width, viewport.height) * .8;
-            scrollRef.current.scale.set(max, max, max);
+            scrollRef.current!.scale.set(max, max, max);
         }
     }, [viewport]);
 
@@ -128,8 +147,9 @@ export const Model: FC = () => {
     useEffect(() => {
         const handler = () => {
             let cur = 0;
+            const scroll = (window.scrollY) / window.innerHeight
             for (let i = 0; i < elements.length; i++) {
-                if (elements[i].scroll > window.scrollY) break;
+                if (elements[i].scroll > scroll) break;
                 cur = i;
             }
             setZone(cur);
@@ -141,7 +161,7 @@ export const Model: FC = () => {
                 return;
             }
             const r2 = elements[cur + 1];
-            const part = (window.scrollY - r1.scroll) / (r2.scroll - r1.scroll) || 0;
+            const part = (scroll - r1.scroll) / (r2.scroll - r1.scroll) || 0;
             meshRef.current!.rotation.set(...merge(r1.rotation, r2.rotation, part));
             meshRef.current!.scale.set(...merge(r1.scale || [1, 1, 1], r2.scale || [1, 1, 1], part));
             meshRef.current!.position.set(...merge(r1.position, r2.position, part));
