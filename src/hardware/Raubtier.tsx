@@ -41,20 +41,20 @@ interface ScrollState {
 }
 
 const tagsFront = <>
-    <Tag title="Abstandssensor" subtitle="HC-SR04" position={[0.25, 0, 0]}>
+    <Tag title="Abstandssensor" icon="/ultrasonic.svg" subtitle="HC-SR04" position={[0.25, 0, 0]}>
         Hindernisse erkennen
     </Tag>
-    <Tag title="Abstandssensor" subtitle="HC-SR04" position={[.23, -.06, .25]} occlude={false}>
+    <Tag title="Abstandssensor" icon="/ultrasonic.svg" subtitle="HC-SR04" position={[.23, -.06, .25]} occlude={false}>
         <div>Hindernisse umfahren</div>
         <div>Raum verlassen</div>
     </Tag>
-    <Tag title="Abstandssensor" subtitle="HC-SR04" position={[.3, -.13, 0]}>
+    <Tag title="Abstandssensor" icon="/ultrasonic.svg" subtitle="HC-SR04" position={[.3, -.13, 0]}>
         Raum verlassen
     </Tag>
-    <Tag dir="t" title="Beschleunigungssensor" subtitle="MPU 6050" position={[.33, .3, 0]}>
+    <Tag dir="t" title="Beschleunigungssensor" subtitle="MPU 6050" position={[.33, .32, 0]}>
         Rampe erkennen
     </Tag>
-    <Tag title="USB-Kamera" subtitle="Fischertechnik" position={[.45, .3, 0]}>
+    <Tag title="USB-Kamera" icon="/camera.svg" dir="t" subtitle="Fischertechnik" position={[.45, .3, 0]}>
         Linie erkennen
     </Tag>
 </>
@@ -85,7 +85,7 @@ const elements: ScrollState[] = [
             <Tag title="OmniWheels" subtitle="Lego" position={[-.23, -.25, .3]}>
                 Saubere Lenkung
             </Tag>
-            <Tag dir="l" title="USB-Kamera" subtitle="Fischertechnik" position={[-.35, -.2, 0]}>
+            <Tag dir="l" title="USB-Kamera" icon="/camera.svg" subtitle="Fischertechnik" position={[-.35, -.2, 0]}>
                 Kugeln erkennen
             </Tag>
             <Tag title="Greifzange" dir="t" subtitle="3D-Druck" position={[-.45, .03, 0]}>
@@ -101,12 +101,12 @@ const elements: ScrollState[] = [
         scroll: 2,
         rotation: topback,
         tags: <>
-            <Tag subtitle="Raspberry Pi 5 (8 GB Ram)" title="Haupt-Controller" position={[.17, 0, .13]}>
+            <Tag icon="/raspberry.svg" subtitle="Raspberry Pi 5 (8 GB Ram)" title="Haupt-Controller" position={[.17, 0, .13]}>
             </Tag>
-            <Tag subtitle="Arduino Nano" title="Micro-controller" dir="l" position={[-.15, .18, .22]}>
+            <Tag icon="/arduino.svg" subtitle="Arduino Nano" title="Micro-controller" dir="l" position={[-.15, .18, .22]}>
                 Auslesen der Abstandssensoren
             </Tag>
-            <Tag subtitle="Fischertechnik" title="Akku für Motoren" dir="l" position={[-.2, .15, -.03]} />
+            <Tag icon="/battery.svg" subtitle="Fischertechnik" title="Akku für Motoren" dir="l" position={[-.2, .15, -.03]} />
         </>
     },
     {

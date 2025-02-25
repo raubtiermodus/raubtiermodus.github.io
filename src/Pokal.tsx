@@ -14,7 +14,7 @@ export const Pokal: FC = () => {
                     <ambientLight intensity={Math.PI * .2}/>
                     <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI}/>
                     <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI}/>
-                    <primitive object={pokal.scene} position={[0, -.55, 0]} rotation={[0, Math.PI * -.2, 0]} scale={[.7, .7, .7]}/>
+                    <primitive object={pokal.scene} position={[0, -.5, 0]} rotation={[0, Math.PI * -.2, 0]} scale={[.6, .6, .6]}/>
                 </FollowMouse>
             </PresentationControls>
         </Scale>
