@@ -2,6 +2,8 @@ import {ComponentProps, FC, ReactNode, useEffect, useRef, useState} from "react"
 import {useThree} from "@react-three/fiber";
 import {CameraControls, Html, PresentationControls, useGLTF} from "@react-three/drei";
 import {Box} from "../Box.tsx";
+import {FollowMouse} from "../3d/FollowMouse.tsx";
+import {Scale} from "../3d/Scale.tsx";
 
 const Tag: FC<ComponentProps<typeof Box> & {
     position: [number, number, number];
@@ -25,6 +27,7 @@ const merge = (t1: Transform | null | undefined, t2: Transform | null | undefine
 }
 
 const top: Transform = [Math.PI / 2, 0, 0];
+const topback: Transform = [Math.PI / 4, Math.PI / 4, 0];
 const front: Transform = [Math.PI / 8, -Math.PI / 4, 0];
 const back: Transform = [0, Math.PI / 4, 0];
 type Transform = [number, number, number]
@@ -41,17 +44,17 @@ const tagsFront = <>
     <Tag title="Abstandssensor" subtitle="HC-SR04" position={[0.25, 0, 0]}>
         Hindernisse erkennen
     </Tag>
-    <Tag title="Abstandssensor" subtitle="HC-SR04" position={[.25, -.125, .25]} occlude={false}>
+    <Tag title="Abstandssensor" subtitle="HC-SR04" position={[.23, -.06, .25]} occlude={false}>
         <div>Hindernisse umfahren</div>
         <div>Raum verlassen</div>
     </Tag>
-    <Tag title="Abstandssensor" subtitle="HC-SR04" position={[.35, -.25, 0]}>
+    <Tag title="Abstandssensor" subtitle="HC-SR04" position={[.3, -.13, 0]}>
         Raum verlassen
     </Tag>
     <Tag dir="t" title="Beschleunigungssensor" subtitle="MPU 6050" position={[.33, .3, 0]}>
         Rampe erkennen
     </Tag>
-    <Tag title="USB-Kamera" subtitle="Fischertechnik" position={[.4, .3, 0]}>
+    <Tag title="USB-Kamera" subtitle="Fischertechnik" position={[.45, .3, 0]}>
         Linie erkennen
     </Tag>
 </>
@@ -60,7 +63,7 @@ const elements: ScrollState[] = [
     {
         scroll: 0,
         rotation: top,
-        scale: [.9, .9, .9]
+        scale: [.8, .8, .8]
     },
     {
         scroll: .2,
@@ -79,14 +82,14 @@ const elements: ScrollState[] = [
         scroll: 1.3,
         rotation: back,
         tags: <>
-            <Tag title="OmniWheels" subtitle="Lego" position={[-.2, -.275, .25]}>
+            <Tag title="OmniWheels" subtitle="Lego" position={[-.23, -.25, .3]}>
                 Saubere Lenkung
             </Tag>
-            <Tag dir="l" title="USB-Kamera" subtitle="Fischertechnik" position={[-.3, -.25, 0]}>
+            <Tag dir="l" title="USB-Kamera" subtitle="Fischertechnik" position={[-.35, -.2, 0]}>
                 Kugeln erkennen
             </Tag>
-            <Tag title="Greifzange" subtitle="3D-Druck" position={[-.45, 0, 0]}>
-                Kugeln halt greifen
+            <Tag title="Greifzange" dir="t" subtitle="3D-Druck" position={[-.45, .03, 0]}>
+                Kugeln greifen
             </Tag>
         </>
     },
@@ -96,18 +99,19 @@ const elements: ScrollState[] = [
     },
     {
         scroll: 2,
-        rotation: top,
+        rotation: topback,
         tags: <>
-            <Tag subtitle="Raspberry Pi 5 (8 GB Ram)" title="Haupt-Controller" position={[0, 0, 0]}>
+            <Tag subtitle="Raspberry Pi 5 (8 GB Ram)" title="Haupt-Controller" position={[.17, 0, .13]}>
             </Tag>
-            <Tag subtitle="Arduino Nano" title="Micro-controller" dir="b" position={[-.2, .1, .22]}>
+            <Tag subtitle="Arduino Nano" title="Micro-controller" dir="l" position={[-.15, .18, .22]}>
                 Auslesen der Abstandssensoren
             </Tag>
+            <Tag subtitle="Fischertechnik" title="Akku für Motoren" dir="l" position={[-.2, .15, -.03]} />
         </>
     },
     {
         scroll: 2.4,
-        rotation: top,
+        rotation: topback,
     },
     {
         scroll: 2.7,
@@ -120,29 +124,10 @@ const elements: ScrollState[] = [
     }
 ]
 
-export const Model: FC = () => {
+export const Raubtier: FC = () => {
     const raubtier = useGLTF("/raubtier.glb");
-    const {viewport} = useThree();
     const meshRef = useRef(null);
-    const scrollRef = useRef(null);
     const [zone, setZone] = useState(0);
-
-    useEffect(() => {
-        if (meshRef.current) {
-            const max = Math.min(viewport.width, viewport.height) * .8;
-            scrollRef.current!.scale.set(max, max, max);
-        }
-    }, [viewport]);
-
-    useEffect(() => {
-        const handler = (e: MouseEvent) => {
-            const x = e.clientX / window.innerWidth - .5;
-            const y = e.clientY / window.innerHeight - .5;
-            scrollRef.current!.rotation.set(y * .1, x * .1, 0);
-        }
-        window.addEventListener("mousemove", handler)
-        return () => window.removeEventListener("mousemove", handler)
-    }, []);
 
     useEffect(() => {
         const handler = () => {
@@ -173,15 +158,17 @@ export const Model: FC = () => {
 
     return <>
         <PresentationControls enabled={false} snap={true} speed={.1}>
-            <group ref={scrollRef}>
-                <group ref={meshRef} rotation={[Math.PI / 2, 0, 0]}>
-                    <ambientLight intensity={Math.PI * 10}/>
-                    <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI * 5}/>
-                    <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI * 5}/>
-                    <primitive object={raubtier.scene}/>
-                    {elements[zone].tags}
-                </group>
-            </group>
+            <Scale>
+                    <group ref={meshRef}>
+                        <FollowMouse>
+                            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI}/>
+                            <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI}/>
+                            <primitive object={raubtier.scene} position={[-.13, -.3, .15]}/>
+                            {elements[zone].tags}
+                        </FollowMouse>
+                    </group>
+            </Scale>
+
         </PresentationControls>
     </>
 }

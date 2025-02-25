@@ -1,8 +1,9 @@
 import {FC, ReactNode} from "react";
+import {Pokal} from "./Pokal.tsx";
 
 const data: {year: number; data: ReactNode[]}[] = [{
     year: 2023,
-    data: [<div className="box">Gründung</div>, <div className="box">Bau des ersten <span className="line-through opacity-50">schlechten</span> Roboters</div>]
+    data: [<div className="box">Gründung, Bau des ersten <span className="line-through opacity-50">schlechten</span> Roboters</div>]
 }, {
     year: 2024,
     data: [<div className="box">5. Platz in Vöhringen, knapp qualifiziert</div>,
@@ -14,14 +15,17 @@ const data: {year: number; data: ReactNode[]}[] = [{
 }]
 
 export const Erfolge: FC = () => {
-    return <div className="scroll-target flex flex-col sm:mx-10 justify-center text-xl" id="erfolge">
-            <div className="flex justify-center gap-3 sm:gap-10">
-                {data.map((entry, i) => <div className="flex flex-col w-80 items-stretch gap-3 mb-3" key={i}>
-                    <div className="grow"></div>
-                    {entry.data}
-                    <div className="text-center opacity-70">{entry.year}</div>
-                </div>)}
-            </div>
-            <div className="w-full h-[1px] bg-gray-300 mb-30"></div>
+    return <div className="scroll-target flex gap-5 sm:mx-10 text-xl !p-0" id="erfolge">
+        <div className="flex flex-col gap-5 justify-center flex-1">
+            {data.map((e, i) => <div key={i} className="flex items-center gap-15">
+                <div className="font-bold opacity-50 text-2xl vertical text-center">{e.year}</div>
+                <div className="flex h-60 gap-5">
+                    {e.data}
+                </div>
+            </div>)}
+        </div>
+        <div className="flex-1">
+            <Pokal />
+        </div>
     </div>
 }

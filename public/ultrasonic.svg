@@ -1,0 +1,9 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Sensor Body -->
+    <rect x="20" y="30" width="60" height="40" rx="5" ry="5" fill="#555" stroke="#222" stroke-width="2"/>
+
+    <!-- Sensor Lenses -->
+    <circle cx="35" cy="50" r="10" fill="#ccc" stroke="#222" stroke-width="2"/>
+    <circle cx="65" cy="50" r="10" fill="#ccc" stroke="#222" stroke-width="2"/>
+    
+</svg>
