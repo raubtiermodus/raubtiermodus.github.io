@@ -27,7 +27,7 @@ const data: { year: number; data: ReactNode[] }[] = [{
 }]
 
 export const Erfolge: FC = () => {
-    return <div className="scroll-target sm:ml-10 text-xl flex gap-5 !p-0" id="erfolge">
+    return <div className="scroll-target sm:ml-10 text-xl flex gap-5 !p-0 !pb-5" id="erfolge">
         <div>
             <div className="h-40 mt-10 mx-24">
                 <div className="text-5xl">Erfolge</div>

@@ -162,12 +162,14 @@ export const Raubtier: FC = () => {
     return <>
         <PresentationControls enabled={false} snap={true} speed={.1}>
             <Scale>
-                <group ref={meshRef}>
-                    <FollowMouse>
-                        <ambientLight intensity={Math.PI * 3} />
-                        <primitive object={raubtier.scene} scale={[.72, .72, .72]} position={[-.1, -.27, 0]} rotation={[0, Math.PI / 2, 0]}/>
-                        {elements[zone].tags}
-                    </FollowMouse>
+                <group position={[0, -.05, 0]}>
+                    <group ref={meshRef}>
+                        <FollowMouse>
+                            <ambientLight intensity={Math.PI * 3} />
+                            <primitive object={raubtier.scene} scale={[.72, .72, .72]} position={[-.1, -.27, 0]} rotation={[0, Math.PI / 2, 0]}/>
+                            {elements[zone].tags}
+                        </FollowMouse>
+                    </group>       
                 </group>
             </Scale>
 
