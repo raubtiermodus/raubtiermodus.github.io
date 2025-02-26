@@ -15,7 +15,7 @@ const data: { year: number; data: ReactNode[] }[] = [{
         <Box title="Deutsche Meisterschaft" subtitle="Kassel, April">
             <div className="text-center my-5">42. Platz</div>
             <div className="text-sm mt-2">Aus Frust darüber:</div>
-            <div>Bau eines besseren Roboters!</div>
+            <div>Bau des jetzigen Roboters!</div>
         </Box>]
 }, {
     year: 2025,
