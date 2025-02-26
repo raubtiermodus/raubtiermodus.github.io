@@ -219,6 +219,7 @@ h1 {
 #hardware .box {
   cursor: pointer;
   @apply border-gray-500;
+  max-width: 400px;
 }
 #hardware .description {
   transition: all .5s;
@@ -233,13 +234,13 @@ h1 {
 #hardware .inner {
   overflow: hidden;
 }
-#hardware .box:hover:not(.expanded) {
+.box.expandable:hover:not(.expanded) {
   transform: scale(1.1);
   border-color: orange;
   background-color: #ffdaa0;
   box-shadow: 0 0 30px 0 orange;
 }
-#hardware .box:hover:not(.expanded)::before {
+.box.expandable:hover:not(.expanded)::before {
   background-color: orange;
 }
 #hardware .box svg, #hardware .box img {

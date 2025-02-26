@@ -1,29 +1,33 @@
 import {back, front, ScrollState, top, topback} from "./ScrollState.tsx";
 import {Tag} from "./Tag.tsx";
 import {AudioLines, BatteryFull, Camera, Hand, LoaderPinwheel, Rotate3d} from "lucide-react";
+import {ComponentProps} from "react";
+
+const distance = {
+    icon: <AudioLines/>,
+    manufacturer: "HC-SR04",
+    title: "Abstandssensor"
+}
+const camera = {
+    icon: <Camera />,
+    manufacturer: "Fischertechnik",
+    title: "Kamera",
+    // children: `Wir haben diese Kamera benutzt, da wir sie schon hatten. 
+    // Die Auflösung ist zwar ausreichend, für das Preis-Leistungsverhältnis aber nicht weiterzuempfehlen.`
+}
 
 const tagsFront = <>
-    <Tag title="Abstandssensor" subtitle="Hindernisse erkennen" icon={<AudioLines/>} manufacturer="HC-SR04"
-         position={[0.25, 0, 0]}>
-        TEST123
-    </Tag>
-    <Tag title="Abstandssensor" subtitle={<>
+    <Tag subtitle="Hindernisse erkennen" position={[0.25, 0, 0]} {...distance} />
+    <Tag subtitle={<>
         <div>Hindernisse umfahren</div>
         <div>Raum verlassen</div>
-    </>} icon={<AudioLines/>} manufacturer="HC-SR04" position={[.23, -.06, .25]} occlude={false}>
-    </Tag>
-    <Tag title="Abstandssensor" icon={<AudioLines/>} subtitle="Raum verlassen" manufacturer="HC-SR04"
-         position={[.3, -.13, 0]}>
-
-    </Tag>
+    </>} position={[.23, -.06, .25]} {...distance} />
+    <Tag subtitle="Raum verlassen" position={[.3, -.13, 0]} {...distance} />
     <Tag dir="t" title="Neigungssensor" icon={<Rotate3d/>} subtitle="Rampe erkennen" manufacturer="MPU 6050"
          position={[.33, .32, 0]}>
 
     </Tag>
-    <Tag title="Kamera" icon={<Camera/>} dir="t" subtitle="Linie erkennen" manufacturer="Fischertechnik"
-         position={[.45, .3, 0]}>
-
-    </Tag>
+    <Tag dir="t" subtitle="Linie erkennen" position={[.45, .3, 0]} {...camera} />
 </>
 export const elements: ScrollState[] = [
     {
@@ -52,10 +56,7 @@ export const elements: ScrollState[] = [
                  position={[-.2, -.25, .25]}>
 
             </Tag>
-            <Tag dir="l" title="Kamera" subtitle="Kugeln erkennen" icon={<Camera/>} manufacturer="Fischertechnik"
-                 position={[-.35, -.2, 0]}>
-
-            </Tag>
+            <Tag dir="l" subtitle="Kugeln erkennen" position={[-.35, -.2, 0]} {...camera} />
             <Tag title="Greifzange" icon={<Hand/>} subtitle="Kugeln greifen" dir="t" manufacturer="3D-Druck"
                  position={[-.45, .03, 0]}>
 
