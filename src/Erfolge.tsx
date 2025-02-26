@@ -1,7 +1,6 @@
 import {FC, ReactNode, Suspense} from "react";
 import {Pokal} from "./Pokal.tsx";
 import {Box} from "./Box.tsx";
-import {Canvas} from "@react-three/fiber";
 
 const data: { year: number; data: ReactNode[] }[] = [{
     year: 2023,
