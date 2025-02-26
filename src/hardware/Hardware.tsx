@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, Suspense} from "react";
 import {Canvas} from "@react-three/fiber";
 import {Raubtier} from "./Raubtier.tsx";
 
@@ -7,7 +7,9 @@ export const Hardware: FC = () => {
         <div className="scroll-target !p-0 h-[380vh]" id="hardware">
             <div className="sticky h-[100vh] top-0 canvas">
                 <Canvas>
-                    <Raubtier/>
+                    <Suspense fallback={"BITTE WARTEN"}>
+                        <Raubtier/>
+                    </Suspense>
                 </Canvas>
             </div>
         </div>

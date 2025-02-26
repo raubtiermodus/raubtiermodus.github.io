@@ -19,9 +19,8 @@ export const Footer = () => {
             </div>
         </div>
         <div className="grow"></div>
-        <a className="flex items-center gap-2 link" target="_blank" href="https://github.com/raubtiermodus">
-            <Icon size={20} path="/github.svg" />
-            GitHub
+        <a className="flex items-center gap-2" target="_blank" href="https://github.com/raubtiermodus">
+            <Icon size={40} path="/github.svg" />
         </a>
     </div>
 }

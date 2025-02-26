@@ -1,6 +1,7 @@
-import {FC, ReactNode} from "react";
+import {FC, ReactNode, Suspense} from "react";
 import {Pokal} from "./Pokal.tsx";
 import {Box} from "./Box.tsx";
+import {Canvas} from "@react-three/fiber";
 
 const data: { year: number; data: ReactNode[] }[] = [{
     year: 2023,
@@ -44,7 +45,9 @@ export const Erfolge: FC = () => {
             </div>
         </div>
         <div className="relative w-96 grow">
-            <Pokal/>
+            <Suspense fallback="wird geladen">
+                <Pokal/>
+            </Suspense>
         </div>
     </div>
 }

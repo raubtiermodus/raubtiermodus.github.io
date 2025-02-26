@@ -1,5 +1,4 @@
 import {FC, PropsWithChildren, ReactNode} from "react";
-import {Icon} from "./Icon.tsx";
 
 export const Box: FC<PropsWithChildren<{
     className?: string
@@ -8,9 +7,12 @@ export const Box: FC<PropsWithChildren<{
     icon?: string
 }>> = ({icon, title, className, children, subtitle}) => {
     return <div className={`box ${className}`}>
-        {icon && <img className="w-8 h-8" src={icon} alt=""/>}
+        {icon && <div className="w-10"/>}
         <div className="grow">
-            <div className="title">{title}</div>
+            <div className={`title flex items-center gap-2 ${icon ? "-translate-x-12" : ""}`}>
+                {icon && <img className="w-10 h-10" src={icon} alt=""/>}
+                {title}
+            </div>
             {subtitle && <div className="subtitle opacity-70 text-sm mb-0.5">{subtitle}</div>}
             <div className="description">{children}</div>
         </div>

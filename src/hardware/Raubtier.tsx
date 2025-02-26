@@ -1,9 +1,9 @@
 import {ComponentProps, FC, ReactNode, useEffect, useRef, useState} from "react";
-import {useThree} from "@react-three/fiber";
-import {CameraControls, Html, PresentationControls, useGLTF} from "@react-three/drei";
+import {Html, PresentationControls, useGLTF} from "@react-three/drei";
 import {Box} from "../Box.tsx";
 import {FollowMouse} from "../3d/FollowMouse.tsx";
 import {Scale} from "../3d/Scale.tsx";
+import {Mesh} from "three";
 
 const Tag: FC<ComponentProps<typeof Box> & {
     position: [number, number, number];
@@ -18,12 +18,12 @@ const Tag: FC<ComponentProps<typeof Box> & {
         onOcclude={setHidden}
         className={"html " + ((hidden && occlude) ? "occluded" : "")}
     >
-        <Box {...props} className={`${props.className || ""} ${props.dir || "r"}`} />
+        <Box {...props} className={`${props.className || ""} ${props.dir || "r"}`}/>
     </Html>
 }
 const merge = (t1: Transform | null | undefined, t2: Transform | null | undefined, part: number) => {
     t2 = t2 || [0, 0, 0];
-    return (t1 || [0, 0, 0]).map((e, i) => e + part * (t2[i] - e))
+    return (t1 || [0, 0, 0]).map((e, i) => e + part * (t2[i] - e)) as Transform
 }
 
 const top: Transform = [Math.PI / 2, 0, 0];
@@ -82,7 +82,7 @@ const elements: ScrollState[] = [
         scroll: 1.3,
         rotation: back,
         tags: <>
-            <Tag title="OmniWheels" subtitle="Lego" position={[-.23, -.25, .3]}>
+            <Tag title="OmniWheels" subtitle="Lego" position={[-.2, -.25, .25]}>
                 Saubere Lenkung
             </Tag>
             <Tag dir="l" title="USB-Kamera" icon="/camera.svg" subtitle="Fischertechnik" position={[-.35, -.2, 0]}>
@@ -101,12 +101,15 @@ const elements: ScrollState[] = [
         scroll: 2,
         rotation: topback,
         tags: <>
-            <Tag icon="/raspberry.svg" subtitle="Raspberry Pi 5 (8 GB Ram)" title="Haupt-Controller" position={[.17, 0, .13]}>
+            <Tag icon="/raspberry.svg" subtitle="Raspberry Pi 5 (8 GB Ram)" title="Haupt-Controller"
+                 position={[.17, 0, .13]}>
             </Tag>
-            <Tag icon="/arduino.svg" subtitle="Arduino Nano" title="Micro-controller" dir="l" position={[-.15, .18, .22]}>
+            <Tag icon="/arduino.svg" subtitle="Arduino Nano" title="Micro-controller" dir="l"
+                 position={[-.15, .18, .22]}>
                 Auslesen der Abstandssensoren
             </Tag>
-            <Tag icon="/battery.svg" subtitle="Fischertechnik" title="Akku für Motoren" dir="l" position={[-.2, .15, -.03]} />
+            <Tag icon="/battery.svg" subtitle="Fischertechnik" title="Akku für Motoren" dir="l"
+                 position={[-.2, .15, -.03]}/>
         </>
     },
     {
@@ -118,7 +121,7 @@ const elements: ScrollState[] = [
         rotation: top,
     },
     {
-        scroll: 3,
+        scroll: 3.2,
         rotation: top,
         position: [2, 0, 0]
     }
@@ -126,7 +129,7 @@ const elements: ScrollState[] = [
 
 export const Raubtier: FC = () => {
     const raubtier = useGLTF("/raubtier.glb");
-    const meshRef = useRef(null);
+    const meshRef = useRef<Mesh>(null);
     const [zone, setZone] = useState(0);
 
     useEffect(() => {
@@ -159,14 +162,13 @@ export const Raubtier: FC = () => {
     return <>
         <PresentationControls enabled={false} snap={true} speed={.1}>
             <Scale>
-                    <group ref={meshRef}>
-                        <FollowMouse>
-                            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI}/>
-                            <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI}/>
-                            <primitive object={raubtier.scene} position={[-.13, -.3, .15]}/>
-                            {elements[zone].tags}
-                        </FollowMouse>
-                    </group>
+                <group ref={meshRef}>
+                    <FollowMouse>
+                        <ambientLight intensity={Math.PI * 3} />
+                        <primitive object={raubtier.scene} scale={[.72, .72, .72]} position={[-.1, -.27, 0]} rotation={[0, Math.PI / 2, 0]}/>
+                        {elements[zone].tags}
+                    </FollowMouse>
+                </group>
             </Scale>
 
         </PresentationControls>

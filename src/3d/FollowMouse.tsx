@@ -1,8 +1,9 @@
 import {FC, PropsWithChildren, useEffect, useRef} from "react";
+import {Mesh} from "three";
 
 export const FollowMouse: FC<PropsWithChildren<{factor?: number}>> = ({children, factor}) => {
     factor = factor || .1;
-    const meshRef = useRef(null);
+    const meshRef = useRef<Mesh>(null);
     useEffect(() => {
         const handler = (e: MouseEvent) => {
             const x = e.clientX / window.innerWidth - .5;
