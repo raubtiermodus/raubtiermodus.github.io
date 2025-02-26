@@ -76,6 +76,7 @@ h1 {
 }
 
 .box {
+  transition: all .5s;
   @apply rounded-lg bg-white border-4 border-gray-200 shadow-lg shadow-gray-200/50;
   /*border: 1px solid transparent;
   box-shadow: 0 0 20px 0 #e6e6e6;
@@ -133,47 +134,52 @@ h1 {
   user-select: none;
 }
 .box.r {
-  transform: translate3d(30px, -50%, 0);
+  translate: 30px  -50%;
+  transform-origin: center left;
 }
 .box.l {
-  transform: translate3d(calc(-100% - 30px), -50%, 0);
+  translate: calc(-100% - 30px) -50%;
+  transform-origin: center right;
 }
 .box.t {
-  transform: translate3d(-50%, calc(-100% - 30px), 0);
+  translate: -50% calc(-100% - 30px);
+  transform-origin: bottom center;
 }
 .box.b {
-  transform: translate3d(-50%, 30px, 0);
+  translate: -50% 30px;
+  transform-origin: top center;
 }
 
 .canvas .box::before {
+  @apply bg-gray-500;
   content: '';
   position: absolute;
-  background: #181c20;
   translate: 0 -50%;
-  outline: 1px solid white;
+  border-radius: 10px;
+  transition: all .5s;
 }
 .box.r::before {
   top: 50%;
   left: -30px;
-  height: 2px;
+  height: 4px;
   width: 30px;
 }
 .box.l::before {
   top: 50%;
   right: -30px;
-  height: 2px;
+  height: 4px;
   width: 30px;
 }
 .box.t::before {
   left: 50%;
   bottom: -45px;
-  width: 2px;
+  width: 4px;
   height: 30px;
 }
 .box.b::before {
   left: 50%;
   top: -15px;
-  width: 2px;
+  width: 4px;
   height: 30px;
 }
 
@@ -208,4 +214,77 @@ h1 {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   --fg: black;
   color: black;
+}
+
+#hardware .box {
+  cursor: pointer;
+  @apply border-gray-500;
+}
+#hardware .description {
+  transition: all .5s;
+  transform-origin: top;
+}
+#hardware .box:not(.expanded) .description {
+  padding-top: 0;
+  padding-bottom: 0;
+  display: none;
+  transform: scaleY(0);
+}
+#hardware .inner {
+  overflow: hidden;
+}
+#hardware .box:hover:not(.expanded) {
+  transform: scale(1.1);
+  border-color: orange;
+  background-color: #ffdaa0;
+  box-shadow: 0 0 30px 0 orange;
+}
+#hardware .box:hover:not(.expanded)::before {
+  background-color: orange;
+}
+#hardware .box svg, #hardware .box img {
+  height: 50px;
+  width: 50px;
+  @apply stroke-green-700
+}
+
+@media (max-width: 1000px) {
+  #hardware .box:not(.expanded) .titles, .box:not(.expanded) .description {
+    display: none;
+  }
+  #hardware .box:not(.expanded) {
+    max-width: 70px;
+    max-height: 70px;
+  }
+  #hardware .box svg, #hardware .box img {
+    height: 40px;
+    width: 40px;
+  }
+  #hardware .box.expanded {
+    cursor: unset;
+    width: 80vw;
+    max-width: 80vw;
+    max-height: 80vh;
+    transform: translate(0, 0) !important;
+    translate: -50% -50% !important;
+    margin-left: 50vw !important;
+    margin-top: 50vh !important;
+    
+  }
+  #hardware .tag-wrapper * {
+    transition: all .5s;
+  }
+  #hardware .tag-wrapper {
+    transition: transform .5s;
+  }
+  .tag-wrapper:has(.box.expanded) {
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    z-index: 100000 !important;
+  }
+  .box.expanded::before {
+    width: 0;
+    height: 0;
+  }
 }

@@ -6,7 +6,7 @@ export const Hardware: FC = () => {
     return <>
         <div className="scroll-target !p-0 h-[380vh] from-blue-200 to-white bg-gradient-to-br" id="hardware">
             <div className="sticky h-[100vh] top-0 canvas">
-                <Canvas>
+                <Canvas gl={{ preserveDrawingBuffer: true }}>
                     <Suspense fallback={"BITTE WARTEN"}>
                         <Raubtier/>
                     </Suspense>
