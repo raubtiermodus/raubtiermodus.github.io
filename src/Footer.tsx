@@ -4,7 +4,7 @@ import {CSSProperties} from "react";
 import {Icon} from "./Icon.tsx";
 
 export const Footer = () => {
-    return <div className="bg-red-600 text-white flex items-center p-5 sm:p-10 gap-5" style={{
+    return <div className="from-red-500 to-red-800 bg-gradient-to-br text-white flex items-center p-5 sm:p-10 gap-5" style={{
         "--fg": "white"
     } as CSSProperties}>
         <a href="https://robotics.gymnasium-weingarten.de/">

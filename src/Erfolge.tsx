@@ -27,25 +27,24 @@ const data: { year: number; data: ReactNode[] }[] = [{
 }]
 
 export const Erfolge: FC = () => {
-    return <div className="scroll-target sm:ml-10 text-xl flex gap-5 !p-0 !pb-5" id="erfolge">
-        <div>
-            <div className="h-40 mt-10 mx-24">
+    return <div className="scroll-target text-xl lg:flex gap-5 !p-0 from-white via-yellow-50 to-yellow-200 bg-gradient-to-br" id="erfolge">
+        <div className="m-10 py-5">
+            <div className="h-40 mt-10 md:ml-24">
                 <div className="text-5xl">Erfolge</div>
                 <div className="text-md">und Misserfolge</div>
             </div>
             <div className="flex flex-col gap-5 justify-center flex-1">
-
-                {data.map((e, i) => <div key={i} className="flex items-center gap-15">
-                    <div className="font-bold opacity-50 text-2xl vertical text-center">{e.year}</div>
-                    <div className="flex h-60 gap-5">
+                {data.map((e, i) => <div key={i} className="md:flex items-center gap-15">
+                    <div className="font-bold opacity-50 text-2xl vertical md:text-center mb-2 md:mb-0">{e.year}</div>
+                    <div className="flex lg:flex-row flex-col gap-5">
                         {e.data}
                     </div>
                 </div>)}
             </div>
         </div>
-        <div className="relative w-96 grow">
-            <Suspense fallback="wird geladen">
-                <Pokal/>
+        <div className="relative w-full h-40 lg:h-[unset] lg:pb-0 pb-5">
+            <Suspense>
+                <Pokal />
             </Suspense>
         </div>
     </div>

@@ -8,7 +8,7 @@ export const useScrollTarget = () => {
             let cur: Element | null = null;
             for(const target of targets) {
                 const {top} = target.getBoundingClientRect()
-                if(top >= 94) break
+                if(top > 94) break
                 cur = target;
             }
             setActive(cur);

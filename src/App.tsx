@@ -3,17 +3,13 @@ import {Footer} from "./Footer.tsx";
 import {Hardware} from "./hardware/Hardware.tsx";
 import {Software} from "./Software.tsx";
 import {Erfolge} from "./Erfolge.tsx";
+import {Explanation} from "./Explanation.tsx";
 
 function App() {
     return (<>
             <div id="top"></div>
             <Header/>
-            <div className="red area">
-                <div>
-                    <span className="font-bold">Rescue Line</span>&nbsp;
-                    Worum geht es überhaupt?
-                </div>
-            </div>
+            <Explanation />
             <Hardware />
             <Software />
             <Erfolge />

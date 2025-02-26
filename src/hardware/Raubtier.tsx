@@ -66,7 +66,7 @@ const elements: ScrollState[] = [
         scale: [.8, .8, .8]
     },
     {
-        scroll: .2,
+        scroll: .4,
         rotation: top
     },
     {
@@ -130,6 +130,7 @@ const elements: ScrollState[] = [
 export const Raubtier: FC = () => {
     const raubtier = useGLTF("/raubtier.glb");
     const meshRef = useRef<Mesh>(null);
+    const titleRef = useRef<HTMLDivElement>(null);
     const [zone, setZone] = useState(0);
 
     useEffect(() => {
@@ -153,6 +154,7 @@ export const Raubtier: FC = () => {
             meshRef.current!.rotation.set(...merge(r1.rotation, r2.rotation, part));
             meshRef.current!.scale.set(...merge(r1.scale || [1, 1, 1], r2.scale || [1, 1, 1], part));
             meshRef.current!.position.set(...merge(r1.position, r2.position, part));
+            if(titleRef.current) titleRef.current.style.opacity = `${1.2 - scroll * 6}`;
         }
         handler()
         window.addEventListener("scroll", handler)
@@ -162,15 +164,22 @@ export const Raubtier: FC = () => {
     return <>
         <PresentationControls enabled={false} snap={true} speed={.1}>
             <Scale>
-                <group position={[0, -.05, 0]}>
-                    <group ref={meshRef}>
-                        <FollowMouse>
-                            <ambientLight intensity={Math.PI * 3} />
-                            <primitive object={raubtier.scene} scale={[.72, .72, .72]} position={[-.1, -.27, 0]} rotation={[0, Math.PI / 2, 0]}/>
+                <FollowMouse>
+                    <Html className="-translate-x-1/2 w-max text-center select-none" position={[0, .45, 0]}>
+                        <div ref={titleRef}>
+                            <h2 className="text-8xl font-bold">Raubtier V2</h2>
+                            <h3 className="text-3xl mt-1">Unser aktueller Roboter</h3>
+                        </div>
+                    </Html>
+                    <group position={[0, -.07, 0]}>
+                        <group ref={meshRef}>
+                            <ambientLight intensity={Math.PI * 3}/>
+                            <primitive object={raubtier.scene} scale={[.72, .72, .72]} position={[-.1, -.27, 0]}
+                                       rotation={[0, Math.PI / 2, 0]}/>
                             {elements[zone].tags}
-                        </FollowMouse>
-                    </group>       
-                </group>
+                        </group>
+                    </group>
+                </FollowMouse>
             </Scale>
 
         </PresentationControls>

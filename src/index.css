@@ -54,9 +54,11 @@ a {
 .area, .scroll-target {
   background-color: var(--bg);
   padding: .75rem;
+  max-width: 100%;
 }
 .scroll-target {
   min-height: 100vh;
+  padding: 2rem;
 }
 .area {
   color: var(--fg);
@@ -87,24 +89,43 @@ h1 {
 .box.gold {
   @apply bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500 border-4 border-yellow-600 shadow-lg shadow-yellow-500/50
 }
+.box.silver {
+  @apply bg-gradient-to-br from-white to-gray-300 border-gray-400 border-4
+}
 .box.unknown {
   @apply bg-gradient-to-br from-green-50 to-green-100 border-green-200
 }
-#erfolge .box, #software .box {
-  @apply min-h-60 w-72;
+#erfolge .box, .big-boxes .box {
+  @apply min-h-60;
+}
+#erfolge .box {
+  @apply w-80;
+}
+.big-boxes .box {
+  color: black;
+  @apply md:w-[30rem] w-full h-[20rem] shadow-none;
 }
 .border-gradient {
   border: none !important;
   @apply p-2
 }
+.red .box {
+  box-shadow: none;
+  color: black;
+}
+
+#software .description {
+  @apply px-4;
+}
+#software .title {
+  @apply font-bold;
+}
+
 .border-gradient > .inner {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 #erfolge .inner {
   @apply p-6
-}
-#software .inner {
-  @apply py-4 px-6
 }
 
 .canvas .box {
@@ -177,14 +198,14 @@ h1 {
   height: 24px;
   background-color: var(--fg);
 }
-.vertical {
-  writing-mode: vertical-rl;
+@media (width >= 48rem /* 768px */) {
+  .vertical {
+    writing-mode: vertical-rl;
+  }
 }
+
 .grid-auto {
-  grid-template-columns: repeat(auto-fill, 288px);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   --fg: black;
   color: black;
-}
-#hardware .inner {
-  @apply pl-5 pr-2 py-1 pb-3
 }
