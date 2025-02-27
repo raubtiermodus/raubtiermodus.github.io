@@ -34,7 +34,7 @@ export const front: Transform = [Math.PI / 8, -Math.PI / 4, 0];
 export const back: Transform = [0, Math.PI / 4, 0];
 export const elements: ScrollZone<object>[] = [
     {
-        scroll: 0,
+        duration: .4,
         effects: {
             rotation: top,
             scale: [.8, .8, .8],
@@ -42,26 +42,26 @@ export const elements: ScrollZone<object>[] = [
         }
     },
     {
-        scroll: .4,
+        duration: .2,
         effects: {
             rotation: top,
         }
     },
     {
-        scroll: .6,
+        duration: .6,
         effects: {
             rotation: front,
         },
         tags: tagsFront
     },
     {
-        scroll: 1,
+        duration: .3,
         effects: {
             rotation: front
         }
     },
     {
-        scroll: 1.3,
+        duration: .6,
         effects: {
             rotation: back,
         },
@@ -78,13 +78,13 @@ export const elements: ScrollZone<object>[] = [
         </>
     },
     {
-        scroll: 1.7,
+        duration: .3,
         effects: {
             rotation: back,
         }
     },
     {
-        scroll: 2,
+        duration: .6,
         effects: {
             rotation: topback,
         },
@@ -101,19 +101,19 @@ export const elements: ScrollZone<object>[] = [
         </>
     },
     {
-        scroll: 2.4,
+        duration: .3,
         effects: {
             rotation: topback,
         }
     },
     {
-        scroll: 2.7,
+        duration: .5,
         effects: {
             rotation: top,
         }
     },
     {
-        scroll: 3.2,
+        duration: 1,
         effects: {
             position: [2, 0, 0],
             rotation: top,

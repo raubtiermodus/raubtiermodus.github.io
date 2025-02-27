@@ -8,7 +8,7 @@ export const merge = (
 export type Transform = [number, number, number]
 
 export type ScrollZone<T> = T & {
-    scroll: number;
+    duration: number;
     effects: {
         [key: string]: Transform;
     }
@@ -18,17 +18,27 @@ export type ScrollZone<T> = T & {
     tags?: ReactNode;
 }
 
-export const useScroll = <T>(container: RefObject<HTMLElement | null> | null, zones: ScrollZone<T>[], handlers: {
+export const useScroll = <T>(container: RefObject<HTMLElement | null> | null, zonesRaw: ScrollZone<T>[], handlers: {
     [key: string]: (value: Transform) => void
 }, defaults: {
     [key: string]: Transform
 }) => {
     const [zone, setZone] = useState(0);
     useEffect(() => {
+        let total = 0
+        const zones = zonesRaw.map(e => {
+            total += e.duration;
+            return {
+                ...e,
+                scroll: total - e.duration
+            }
+        });
+
+
         const h = () => {
             let cur = 0;
             const top = (container && container.current) ? -container.current.getBoundingClientRect().top : window.scrollY;
-            const scroll =  Math.max(top, 0) / window.innerHeight;
+            const scroll = Math.max(top, 0) / window.innerHeight;
             for (let i = 0; i < zones.length; i++) {
                 if (zones[i].scroll > scroll) break;
                 cur = i;
