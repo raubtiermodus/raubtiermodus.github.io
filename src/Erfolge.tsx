@@ -42,7 +42,7 @@ export const Erfolge: FC = () => {
                 </div>)}
             </div>
         </div>
-        <div className="relative w-full h-40 lg:h-[unset] lg:pb-0 pb-5">
+        <div className="relative w-full min-w-0 h-[40rem] lg:h-[unset] lg:pb-0">
             <Suspense>
                 <Pokal />
             </Suspense>

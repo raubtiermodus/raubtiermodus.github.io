@@ -110,7 +110,7 @@ h1 {
   @apply w-full
 }
 #erfolge .box {
-  @apply w-80;
+  @apply md:w-80 w-full;
 }
 .big-boxes .box {
   color: black;

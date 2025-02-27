@@ -48,8 +48,7 @@ export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scro
                                        position={[-.1, -.27, 0]}
                                        rotation={[0, Math.PI / 2, 0]}/>
                         </group>
-                        {elements[zone].tags}
-                        <group ref={plate} position={[0, -.26, 0]} scale={[1, 1, .7]}>
+                        {zone >= 8 && <group ref={plate} position={[0, -.26, 0]} scale={[1, 1, .7]}>
                             <mesh>
                                 <meshStandardMaterial color="white"/>
                                 <boxGeometry args={[100, .03, 1]}/>
@@ -58,7 +57,8 @@ export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scro
                                 <meshStandardMaterial color="black"/>
                                 <boxGeometry args={[100, .031, .1]}/>
                             </mesh>
-                        </group>
+                        </group>}
+                        {elements[zone].tags}
                     </group>
                 </group>
             </FollowMouse>

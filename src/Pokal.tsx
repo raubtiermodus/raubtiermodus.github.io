@@ -28,9 +28,13 @@ export const Pokal: FC<{ scale?: number }> = ({scale}) => {
 
     return <Canvas>
         <Scale>
-            <PresentationControls enabled={true} snap={true} speed={2}>
+            <PresentationControls global={true} enabled={true} snap={true} speed={2}>
                 <FollowMouse factor={1}>
                     <primitive object={pokal.scene} position={[0, -.55, 0]} scale={[scale, scale, scale]}/>
+                    <mesh position={[ .015, -.53, -.01]}>
+                        <meshStandardMaterial roughness={100} metalness={1} color="gold" emissive="black" />
+                        <boxGeometry args={[.3, .015, .3]} />
+                    </mesh>
                     <Lights/>
                 </FollowMouse>
             </PresentationControls>
