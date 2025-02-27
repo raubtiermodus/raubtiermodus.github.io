@@ -1,7 +1,6 @@
 import {back, front, ScrollState, top, topback} from "./ScrollState.tsx";
 import {Tag} from "./Tag.tsx";
 import {AudioLines, BatteryFull, Camera, Hand, LoaderPinwheel, Rotate3d} from "lucide-react";
-import {ComponentProps} from "react";
 
 const distance = {
     icon: <AudioLines/>,
@@ -9,7 +8,7 @@ const distance = {
     title: "Abstandssensor"
 }
 const camera = {
-    icon: <Camera />,
+    icon: <Camera/>,
     manufacturer: "Fischertechnik",
     title: "Kamera",
     // children: `Wir haben diese Kamera benutzt, da wir sie schon hatten. 

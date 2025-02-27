@@ -3,7 +3,7 @@ import {Canvas} from "@react-three/fiber";
 import {FollowMouse} from "./3d/FollowMouse.tsx";
 import {PresentationControls, useGLTF} from "@react-three/drei";
 import {Scale} from "./3d/Scale.tsx";
-import {DirectionalLight, PointLight, SpotLight} from "three";
+import {DirectionalLight, SpotLight} from "three";
 
 const Lights: FC = () => {
     const d = useRef<DirectionalLight>(null)
@@ -22,7 +22,7 @@ const Lights: FC = () => {
     </>
 }
 
-export const Pokal: FC<{scale?: number}> = ({scale}) => {
+export const Pokal: FC<{ scale?: number }> = ({scale}) => {
     const pokal = useGLTF("/pokal.glb");
     scale = scale || 1;
 

@@ -27,7 +27,7 @@ export const Explanation: FC = () => {
                         <p>
                             Die Grundaufgabe ist, der schwarzen Linie zu folgen, doch es gibt einige zusätzliche
                             Elemente:
-                            An Kreuzungen muss der Roboter geradeaus weiterfahren oder abbiegen, wenn ein grüner Punkt
+                            An einer Kreuzung muss der Roboter abbiegen, wenn ein grüner Punkt
                             auf einer Seite der Linie vor der Kreuzung ist.
                             Wenn auf beiden Seiten der Linie ein grüner Punkt ist, muss er umdrehen.
                             Außerdem muss der Roboter mit kleinen und großen Hindernissen, Rampen und Wippen
@@ -67,7 +67,7 @@ export const Explanation: FC = () => {
                     <h2 className="text-3xl font-bold my-3">3. Linie folgen</h2>
                     <div>
                         <p>
-                            Nach dem Raum kommt wieder ein Parcours wie am Anfang. Das Ende des Parcours ist mit einer
+                            Nach dem Raum kommt wieder ein Parcours mit einer Linie wie am Anfang. Das Ende des Parcours ist mit einer
                             roten Linie markiert.
                             Wenn der Roboter auf ihr mindestens 5 Sekunden stehen bleibt, erhält er nochmal einige
                             Punkte, je nachdem wie oft er insgesamt zurückgesetzt wurde.

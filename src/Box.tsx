@@ -1,4 +1,5 @@
 import {FC, PropsWithChildren, ReactNode} from "react";
+import {ExternalLink} from "lucide-react";
 
 export const Box: FC<PropsWithChildren<{
     className?: string
@@ -6,7 +7,8 @@ export const Box: FC<PropsWithChildren<{
     subtitle?: ReactNode;
     icon?: string | ReactNode;
     additional?: ReactNode;
-}>> = ({icon, title, className, children, subtitle, additional}) => {
+    link?: string;
+}>> = ({icon, title, className, children, subtitle, additional, link}) => {
     return <div className={`box ${className} w-max`}>
         <div className="inner flex w-full rounded-lg h-full">
             <div className="grow">
@@ -19,7 +21,11 @@ export const Box: FC<PropsWithChildren<{
                         </div>
                         {subtitle && <div className="subtitle opacity-70 text-sm mb-0.5">{subtitle}</div>}
                     </div>
+                    <div className="grow"></div>
                     {additional}
+                    {link && <a href={link} className="mr-2" target="_blank">
+                        <ExternalLink className="!w-5 !h-5" />
+                    </a>}
                 </div>
                 {children && <div className="description p-2 pt-0">{children}</div>}
             </div>

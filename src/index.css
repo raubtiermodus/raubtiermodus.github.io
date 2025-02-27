@@ -11,7 +11,6 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
 }
 
 a {
@@ -87,24 +86,35 @@ h1 {
   */
   
 }
+.box img, .box svg {
+  @apply w-10 h-10;
+}
 .box.gold {
   @apply bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500 border-4 border-yellow-600 shadow-lg shadow-yellow-500/50
 }
 .box.silver {
-  @apply bg-gradient-to-br from-white to-gray-300 border-gray-400 border-4
+  @apply bg-gradient-to-br from-white to-gray-400 border-gray-400 border-4
 }
 .box.unknown {
   @apply bg-gradient-to-br from-green-50 to-green-100 border-green-200
 }
 #erfolge .box, .big-boxes .box {
-  @apply min-h-60;
+}
+.small-boxes .box {
+  @apply w-96 justify-center
+}
+.small-boxes .inner > .grow {
+  @apply flex items-center justify-stretch;
+}
+.small-boxes .inner > .grow > div {
+  @apply w-full
 }
 #erfolge .box {
   @apply w-80;
 }
 .big-boxes .box {
   color: black;
-  @apply md:w-[30rem] w-full h-[20rem] shadow-none;
+  @apply xl:w-[30rem] w-full min-h-[15rem] shadow-none text-xl;
 }
 .border-gradient {
   border: none !important;
@@ -250,7 +260,7 @@ h1 {
 }
 
 @media (max-width: 1000px) {
-  #hardware .box:not(.expanded) .titles, .box:not(.expanded) .description {
+  #hardware .box:not(.expanded) .titles {
     display: none;
   }
   #hardware .box:not(.expanded) {
@@ -288,4 +298,17 @@ h1 {
     width: 0;
     height: 0;
   }
+}
+html {
+  overflow-x: hidden;
+}
+#software {
+  @apply text-xl;
+}
+p {
+  @apply my-3;
+}
+.color {
+  background-color: rgba(255, 255, 255, 0.6);
+  @apply rounded-lg inline-block py-0.5 px-1;
 }

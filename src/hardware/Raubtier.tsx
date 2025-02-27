@@ -49,7 +49,7 @@ export const Raubtier: FC = () => {
         <PresentationControls enabled={true} snap={true} speed={.1}>
             <Scale>
                 <FollowMouse>
-                    {zone <= 1 && <Html className="-translate-x-1/2 -translate-y-full w-max text-center select-none"
+                    {zone <= 1 && <Html occlude="blending" className="-translate-x-1/2 -translate-y-full w-max text-center select-none"
                            position={[0, .27, 0]}>
                         <div ref={titleRef}>
                             <h2 className="md:text-8xl sm:text-5xl text-3xl font-bold">Raubtier V2</h2>
