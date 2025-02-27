@@ -1,7 +1,6 @@
 import {FC, Suspense, useRef} from "react";
 import {Canvas} from "@react-three/fiber";
 import {Raubtier} from "./Raubtier.tsx";
-import {Html} from "@react-three/drei";
 
 export const Hardware: FC = () => {
     const ref = useRef<HTMLDivElement>(null);

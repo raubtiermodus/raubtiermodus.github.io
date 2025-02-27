@@ -12,20 +12,42 @@ export const Software: FC = () => {
                 <p>
                     Zunächst werden die Kanten im Bild erkannt. Bei jedem der dadurch entstehenden Bereiche wird anhand
                     dessen
-                    Helligkeit entschieden, ob es sich um eine <span
-                    className="color text-[#0705d7]">Linie</span> handelt oder nicht.
+                    Helligkeit entschieden, ob es sich um eine
+                    <span className="mx-1 rounded-lg inline-block from-blue-700 to-[#0705d7] bg-gradient-to-br">
+                        <span className="px-1 -py-0.5 rounded-md bg-white/60 text-black">Linie</span>
+                    </span>
+                    handelt oder nicht.
                 </p>
                 <p>
-                    Die so erkannte Linie wird anschließend <span className="color text-[#c0b67c]">verdünnt</span>.
+                    Die so erkannte Linie wird anschließend
+                    <span className="mx-1 rounded-lg inline-block from-[gold] to-[#c0b67c] bg-gradient-to-br">
+                        <span className="px-1 -py-0.5 rounded-md bg-white/60 text-black">verdünnt</span>
+                    </span>.
+                    
                 </p>
                 <p>
-                    Um zu erkennen, welchem <span className="color text-[#aa3c9d]">Weg</span> der Roboter folgen soll, wird die verdünnte Linie nun von unten aus abgelaufen.
-                    Wenn sich die Linie verzweigt, wird nach <span className="color text-[#14f119]">grünen Punkten</span> links und rechts der Linie vor der Kreuzung gesucht.
+                    Um zu erkennen, welchem
+                    <span className="mx-1 rounded-lg inline-block from-pink-600 to-[#aa3c9d] bg-gradient-to-br">
+                        <span className="px-1 -py-0.5 rounded-md bg-white/60 text-black">Weg</span>
+                    </span>
+                    der Roboter folgen soll,
+                    wird die verdünnte Linie nun von unten aus abgelaufen.
+                    Wenn sich die Linie verzweigt, wird nach
+                    <span className="mx-1 rounded-lg inline-block from-green-400 to-[#14f119] bg-gradient-to-br">
+                        <span className="px-1 -py-0.5 rounded-md bg-white/60 text-black">grünen Punkten</span>
+                    </span>
+                    links und rechts der Linie vor der Kreuzung
+                    gesucht.
                     Je nach dem wird dann der Verzweigung gefolgt, die im Vergleich zur bisherigen Linie am geradesten
                     oder am stärksten nach rechts oder links verläuft.
                 </p>
                 <p>
-                    Je weiter außen der <span className="color text-[#05feff]">letzte Punkt</span> dieser Linie ist, desto stärker wird gelenkt.
+                    Je weiter außen der
+                    <span className="mx-1 rounded-lg inline-block from-blue-400 to-[#05feff] bg-gradient-to-br">
+                        <span className="px-1 -py-0.5 rounded-md bg-white/60 text-black">letzte Punkt</span>
+                    </span>
+                    dieser Linie ist,
+                    desto stärker wird gelenkt.
                 </p>
             </div>
             <img className="rounded-xl flex-1 w-full max-w-[50rem]" src="/line.jpg" alt=""/>
@@ -41,8 +63,9 @@ export const Software: FC = () => {
             <div className="flex-1 flex flex-col items-center max-w-[50rem] xl:max-w-[unset] w-full">
                 <img className="rounded-xl w-full" src="/ball_raw.jpg" alt=""/>
                 <p>
-                    In den Kanten werden mithilfe der 
-                    <a target="_blank" className="mx-2 link font-bold text-nowrap" href="https://de.wikipedia.org/wiki/Hough-Transformation">Hough-Transformation</a>
+                    In den Kanten werden mithilfe der
+                    <a target="_blank" className="mx-2 link font-bold text-nowrap"
+                       href="https://de.wikipedia.org/wiki/Hough-Transformation">Hough-Transformation</a>
                     Kreise gesucht.
                 </p>
             </div>
@@ -54,7 +77,8 @@ export const Software: FC = () => {
                 </p>
             </div>
         </div>
-        <div className="lg:text-5xl text-3xl mb-12 text-center mt-24">Verwendete Programmiersprachen und Bibliotheken</div>
+        <div className="lg:text-5xl text-3xl mb-12 text-center mt-24">Verwendete Programmiersprachen und Bibliotheken
+        </div>
         <div className="flex flex-wrap justify-center gap-8 big-boxes">
             <Box icon="/python.svg" className="border-gradient from-blue-600 to-yellow-500 bg-gradient-to-br"
                  title="Python" subtitle="Programmiersprache">
@@ -79,7 +103,8 @@ export const Software: FC = () => {
         <div className="flex flex-wrap justify-center gap-4 mt-6 small-boxes">
             <Box link="https://numpy.org/" icon="/numpy.svg" className="silver" title="NumPy"
                  subtitle="Effizientere Berechnungen in Python"/>
-            <Box link="https://pyserial.readthedocs.io/en/latest/pyserial.html" icon={<Usb/>} className="silver" title="pyserial"
+            <Box link="https://pyserial.readthedocs.io/en/latest/pyserial.html" icon={<Usb/>} className="silver"
+                 title="pyserial"
                  subtitle="Serielle Kommunikation mit dem Arduino"/>
             <Box link="https://gpiozero.readthedocs.io/en/latest/" icon={<Cable/>} className="silver"
                  subtitle="Steuerung der Motoren, LEDs, Taster" title="gpiozero"/>

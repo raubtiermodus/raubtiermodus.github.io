@@ -107,7 +107,7 @@ export const elements: ScrollZone<object>[] = [
         }
     },
     {
-        duration: .1,
+        duration: .4,
         effects: {
             rotation: [Math.PI * .2, 0, 0],
         }
