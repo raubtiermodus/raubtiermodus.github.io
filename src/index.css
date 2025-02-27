@@ -259,7 +259,7 @@ h1 {
   @apply stroke-green-700
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1500px) {
   #hardware .box:not(.expanded) .titles {
     display: none;
   }

@@ -1,4 +1,4 @@
-import {FC, useRef} from "react";
+import {FC, RefObject, useRef} from "react";
 import {Html, PresentationControls, useGLTF} from "@react-three/drei";
 import {FollowMouse} from "../3d/FollowMouse.tsx";
 import {Scale} from "../3d/Scale.tsx";
@@ -6,11 +6,11 @@ import {Mesh} from "three";
 import {elements} from "./ScrollElements.tsx";
 import {useScroll} from "../3d/Scroll.ts";
 
-export const Raubtier: FC = () => {
+export const Raubtier: FC<{scrollRef: RefObject<HTMLElement | null>}> = ({scrollRef}) => {
     const raubtier = useGLTF("/raubtier.glb");
     const meshRef = useRef<Mesh>(null);
     const titleRef = useRef<HTMLDivElement>(null);
-    const zone = useScroll(null, elements, {
+    const zone = useScroll(scrollRef, elements, {
         position: (v) => meshRef.current!.position.set(...v),
         rotation: (v) => meshRef.current!.rotation.set(...v),
         scale: (v) => meshRef.current!.scale.set(...v),

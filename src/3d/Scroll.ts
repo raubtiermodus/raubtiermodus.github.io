@@ -18,7 +18,7 @@ export type ScrollZone<T> = T & {
     tags?: ReactNode;
 }
 
-export const useScroll = <T>(container: RefObject<HTMLElement> | null, zones: ScrollZone<T>[], handlers: {
+export const useScroll = <T>(container: RefObject<HTMLElement | null> | null, zones: ScrollZone<T>[], handlers: {
     [key: string]: (value: Transform) => void
 }, defaults: {
     [key: string]: Transform
@@ -27,7 +27,8 @@ export const useScroll = <T>(container: RefObject<HTMLElement> | null, zones: Sc
     useEffect(() => {
         const h = () => {
             let cur = 0;
-            const scroll = (window.scrollY) / window.innerHeight
+            const top = (container && container.current) ? -container.current.getBoundingClientRect().top : window.scrollY;
+            const scroll =  Math.max(top, 0) / window.innerHeight;
             for (let i = 0; i < zones.length; i++) {
                 if (zones[i].scroll > scroll) break;
                 cur = i;

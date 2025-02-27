@@ -1,11 +1,9 @@
-import {FC, useEffect, useState} from "react";
+import {FC, useState} from "react";
 import {ChevronRight} from "lucide-react";
 
 export const Explanation: FC = () => {
     const [shown, setShown] = useState(false);
-    useEffect(() => {
-        window.dispatchEvent(new Event("scroll"))
-    }, [shown]);
+
     return <div
         className={`transition !p-0 bg-gradient-to-br red area ${shown ? "from-red-500 to-red-800 scroll-target !min-h-0" : ""}`}>
         <div
@@ -67,7 +65,8 @@ export const Explanation: FC = () => {
                     <h2 className="text-3xl font-bold my-3">3. Linie folgen</h2>
                     <div>
                         <p>
-                            Nach dem Raum kommt wieder ein Parcours mit einer Linie wie am Anfang. Das Ende des Parcours ist mit einer
+                            Nach dem Raum kommt wieder ein Parcours mit einer Linie wie am Anfang. Das Ende des Parcours
+                            ist mit einer
                             roten Linie markiert.
                             Wenn der Roboter auf ihr mindestens 5 Sekunden stehen bleibt, erhält er nochmal einige
                             Punkte, je nachdem wie oft er insgesamt zurückgesetzt wurde.
