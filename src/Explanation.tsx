@@ -1,9 +1,11 @@
-import {FC, useState} from "react";
-import {ChevronRight} from "lucide-react";
+import {FC, useEffect, useState} from "react";
+import {ChevronRight, ExternalLink} from "lucide-react";
 
 export const Explanation: FC = () => {
     const [shown, setShown] = useState(false);
-
+    useEffect(() => {
+        window.dispatchEvent(new Event("scroll"))
+    }, [shown]);
     return <div
         className={`transition !p-0 bg-gradient-to-br red area ${shown ? "from-red-500 to-red-800 scroll-target !min-h-0" : ""}`}>
         <div
@@ -12,13 +14,18 @@ export const Explanation: FC = () => {
                 setShown(!shown);
             }}>
             <ChevronRight className={"transition " + (shown ? "rotate-90" : "")}/>
-            <div>
-                <span className="font-bold">Rescue Line</span>&nbsp;
+            <div className="grow">
+                <span className="font-bold hidden sm:inline">Rescue Line&nbsp;</span>
                 Was ist überhaupt die Aufgabe?
             </div>
+            {shown && <a href="https://junior.robocup.org/wp-content/uploads/2024/01/RCJRescueLine2024-final.pdf" target="_blank"
+                className="link items-center gap-2 font-bold fadein hidden md:flex">
+                Offizielles Regelwerk
+                <ExternalLink size={20} strokeWidth={3}/>
+            </a>}
         </div>
         <div className={`overflow-hidden transition-all ${shown ? "xl:max-h-[100rem] max-h-[300rem]" : "max-h-0"}`}>
-            <div className="my-6 mx-10 text-xl xl:flex gap-5 items-center">
+            <div className="my-6 mx-10 text-xl xl:flex gap-5 items-center w-full">
                 <div className="flex-1">
                     <h2 className="text-3xl font-bold my-3">1. Linie folgen</h2>
                     <div>
@@ -41,8 +48,10 @@ export const Explanation: FC = () => {
                             geschafften Bereich.
                             Die Anzahl der Punkte pro Platte hängt davon ab, beim wievielten Versuch der Roboter den
                             Bereich geschafft hat.
-                            Falls der Roboter in einem Bereich dreimal zurückgesetzt wurde, darf der Bereich übersprungen
-                            und der Roboter zum nächsten Checkpoint gesetzt werden, aber natürlich ohne Punkte zu bekommen.
+                            Falls der Roboter in einem Bereich dreimal zurückgesetzt wurde, darf der Bereich
+                            übersprungen
+                            und der Roboter zum nächsten Checkpoint gesetzt werden, aber natürlich ohne Punkte zu
+                            bekommen.
                         </p>
                     </div>
                     <h2 className="text-3xl font-bold my-3">2. Kugeln einsammeln</h2>
@@ -78,6 +87,14 @@ export const Explanation: FC = () => {
                 <div className="flex-1">
                     <img src="/parcours.png" alt="" className="w-full"/>
                 </div>
+            </div>
+            <div className="flex md:hidden">
+                <div className="grow"></div>
+                <a href="https://junior.robocup.org/wp-content/uploads/2024/01/RCJRescueLine2024-final.pdf" target="_blank"
+                   className="link items-center gap-2 font-bold fadein flex mb-5 mr-5">
+                    Offizielles Regelwerk
+                    <ExternalLink size={20} strokeWidth={3}/>
+                </a>
             </div>
         </div>
     </div>

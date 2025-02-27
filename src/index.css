@@ -309,6 +309,14 @@ p {
   @apply my-3;
 }
 .color {
-  background-color: rgba(0, 0, 0, 0.69);
-  @apply rounded-lg inline-block py-0.5 px-1;
+  background-color: rgba(0, 0, 0, 0.49);
+  @apply rounded-lg inline-block px-2;
+}
+.fadein {
+  transition: all .3s;
+}
+@starting-style {
+  .fadein {
+    opacity: 0;
+  }
 }

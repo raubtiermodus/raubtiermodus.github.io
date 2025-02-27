@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "types": ["@react-three/fiber"]
+    "types": ["@react-three/fiber"],
+    "jsx": "react-jsx",
   },
   "files": [],
   "references": [
