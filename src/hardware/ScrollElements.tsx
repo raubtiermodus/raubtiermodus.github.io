@@ -107,16 +107,24 @@ export const elements: ScrollZone<object>[] = [
         }
     },
     {
-        duration: .5,
+        duration: .1,
         effects: {
-            rotation: top,
+            rotation: [Math.PI * .2, 0, 0],
         }
     },
     {
         duration: 1,
         effects: {
-            position: [2, 0, 0],
-            rotation: top,
+            rotation: [Math.PI * .2, 0, 0],
+            plateOpacity: [1, 0, 0]
+        }
+    },
+    {
+        duration: 1,
+        effects: {
+            position: [3, 0, 0],
+            rotation: [Math.PI * .2, 0, 0],
+            plateOpacity: [1, 0, 0]
         }
     }
 ]
