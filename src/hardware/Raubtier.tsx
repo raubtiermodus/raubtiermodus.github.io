@@ -20,11 +20,15 @@ export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scro
         opacity: (v) => {
             if (titleRef.current) titleRef.current.style.opacity = `${v[0]}`
         },
+        platePosition: (v) => {
+            if (plate.current) plate.current.position.set(...v);
+        },
         plateOpacity: (v) => {
             if (plate.current) setOpacity(plate.current, v[0])
         }
     }, {
-        scale: [1, 1, 1]
+        scale: [1, 1, 1],
+        platePosition: [0, -1, 0]
     });
 
 
@@ -46,7 +50,8 @@ export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scro
                             <Model ref={primitive} file="/raubtier.glb" scale={[.72, .72, .72]}
                                    position={[-.1, -.27, 0]}
                                    rotation={[0, Math.PI / 2, 0]}>
-                                {zone >= 8 && <group ref={plate} position={[0, -.26, 0]} scale={[1, 1, .7]}>
+                                {zone >= 8 && <group ref={plate}>
+                                    <group position={[0, -.26, 0]} scale={[1, 1, .7]}>
                                     <mesh>
                                         <meshStandardMaterial color="white"/>
                                         <boxGeometry args={[100, .03, 1]}/>
@@ -55,6 +60,7 @@ export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scro
                                         <meshStandardMaterial color="black"/>
                                         <boxGeometry args={[100, .031, .1]}/>
                                     </mesh>
+                                </group>
                                 </group>}
                                 {elements[zone].tags}         
                             </Model>
