@@ -1,6 +1,6 @@
 import {FC} from "react";
 // @ts-expect-error blablabla
-import logo from "/icon.svg";
+import logo from "/icons/favicon.svg";
 import {ScrollLink, useScrollTarget} from "./ScrollLink.tsx";
 import {Icon} from "./Icon.tsx";
 

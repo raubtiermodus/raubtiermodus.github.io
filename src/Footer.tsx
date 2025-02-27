@@ -1,5 +1,5 @@
 // @ts-expect-error blablabla
-import logo from "/icon.svg";
+import logo from "/icons/favicon.svg";
 import {CSSProperties} from "react";
 import {Icon} from "./Icon.tsx";
 

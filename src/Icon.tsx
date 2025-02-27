@@ -7,7 +7,7 @@ export const Icon: FC<{
     return <div className="icon" style={{
         width: `${size}px`,
         height: `${size}px`,
-        maskImage: `url(${path})`, 
-        WebkitMaskImage: `url(${path})`
+        maskImage: `url(icons/${path})`, 
+        WebkitMaskImage: `url(icons/${path})`
     }} />
 }

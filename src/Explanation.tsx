@@ -17,7 +17,7 @@ export const Explanation: FC = () => {
                 Was ist überhaupt die Aufgabe?
             </div>
         </div>
-        <div className={`overflow-hidden transition-all ${shown ? "max-h-[100rem]" : "max-h-0"}`}>
+        <div className={`overflow-hidden transition-all ${shown ? "xl:max-h-[100rem] max-h-[300rem]" : "max-h-0"}`}>
             <div className="my-6 mx-10 text-xl xl:flex gap-5 items-center">
                 <div className="flex-1">
                     <h2 className="text-3xl font-bold my-3">1. Linie folgen</h2>
@@ -41,6 +41,8 @@ export const Explanation: FC = () => {
                             geschafften Bereich.
                             Die Anzahl der Punkte pro Platte hängt davon ab, beim wievielten Versuch der Roboter den
                             Bereich geschafft hat.
+                            Falls der Roboter in einem Bereich dreimal zurückgesetzt wurde, darf der Bereich übersprungen
+                            und der Roboter zum nächsten Checkpoint gesetzt werden, aber natürlich ohne Punkte zu bekommen.
                         </p>
                     </div>
                     <h2 className="text-3xl font-bold my-3">2. Kugeln einsammeln</h2>
@@ -62,7 +64,7 @@ export const Explanation: FC = () => {
                             schwarzen Linie markiert, während der Eingang mit einer silbernen markiert ist.
                         </p>
                     </div>
-                    <h2 className="text-3xl font-bold my-3">3. Linie folgen</h2>
+                    <h2 className="text-3xl font-bold my-3">3. Nochmal Linie folgen</h2>
                     <div>
                         <p>
                             Nach dem Raum kommt wieder ein Parcours mit einer Linie wie am Anfang. Das Ende des Parcours

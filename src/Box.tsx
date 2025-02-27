@@ -13,7 +13,7 @@ export const Box: FC<PropsWithChildren<{
         <div className="inner flex w-full rounded-lg h-full">
             <div className="grow">
                 <div className="flex items-center gap-2 p-2">
-                    {icon && typeof icon === "string" ? <img className="w-10 h-10" src={icon} alt=""/> :
+                    {icon && typeof icon === "string" ? <img className="w-10 h-10" src={`/icons${icon}`} alt=""/> :
                         icon}
                     <div className="titles">
                         <div className="title ">
