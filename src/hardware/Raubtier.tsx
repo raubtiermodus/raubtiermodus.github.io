@@ -47,11 +47,11 @@ export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scro
                     <group ref={meshRef}>
                         <ambientLight intensity={Math.PI * 2}/>
                         <directionalLight position={[0, 1, 0]} intensity={Math.PI * 3}/>
-                            <Model ref={primitive} file="/raubtier.glb" scale={[.72, .72, .72]}
-                                   position={[-.1, -.27, 0]}
-                                   rotation={[0, Math.PI / 2, 0]}>
-                                {zone >= 8 && <group ref={plate}>
-                                    <group position={[0, -.26, 0]} scale={[1, 1, .7]}>
+                        <Model ref={primitive} file="/raubtier.glb" scale={[.72, .72, .72]}
+                               position={[-.1, -.27, 0]}
+                               rotation={[0, Math.PI / 2, 0]}>
+                            {zone >= 10 && <group ref={plate}>
+                                <group position={[0, -.26, 0]} scale={[1, 1, .7]}>
                                     <mesh>
                                         <meshStandardMaterial color="white"/>
                                         <boxGeometry args={[100, .03, 1]}/>
@@ -61,9 +61,9 @@ export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scro
                                         <boxGeometry args={[100, .031, .1]}/>
                                     </mesh>
                                 </group>
-                                </group>}
-                                {elements[zone].tags}         
-                            </Model>
+                            </group>}
+                            {elements[zone].tags}
+                        </Model>
                     </group>
                 </group>
             </FollowMouse>

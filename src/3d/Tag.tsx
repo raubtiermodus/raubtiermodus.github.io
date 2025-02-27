@@ -34,15 +34,12 @@ export const Tag: FC<ComponentProps<typeof Box> & {
             setExpanded(!expanded)
         }}>
             <Box additional={<>
-                <div className="grow"></div>
-                {props.children && <ChevronDown
+                {(props.children || props.manufacturer) && <ChevronDown
                     className={"!stroke-gray-500 !w-8 !h-8 transition hidden lg:block" + (expanded ? " -rotate-180" : "")}/>}
             </>} {...props} className={`${props.className || ""} ${expanded ? " expanded " : ""} ${props.dir || "r"}`}
-                 title={<>
-                     {props.title}
-                     {(expanded || !props.children) && props.manufacturer && 
-                         <span className="opacity-70">&nbsp;({props.manufacturer})</span>}
-                 </>}/>
+                 title={props.title}>
+                {expanded && props.manufacturer && <span className="opacity-80">{props.manufacturer}</span>}
+            </Box>
         </div>
     </Html>
 }

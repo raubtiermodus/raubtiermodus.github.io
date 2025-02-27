@@ -4,14 +4,15 @@ import {Cable, Rotate3d, Usb} from "lucide-react";
 
 export const Software: FC = () => {
     return <div
-        className="scroll-target red lg:!p-20 lg:!pt-28 from-orange-500 via-red-500 to-red-900 bg-gradient-to-br"
+        className="scroll-target red lg:!p-20 lg:!pt-16 from-orange-500 via-red-500 to-red-900 bg-gradient-to-br"
         id="software">
-        <div className="lg:text-5xl text-3xl mb-12 text-center">Folgen der Linie</div>
+        <div className="lg:text-8xl text-5xl mb-12 text-center">Software</div>
+        <div className="lg:text-5xl text-3xl mb-12 text-center">Der Linie folgen</div>
         <div className="flex flex-col-reverse xl:flex-row xl:gap-10 items-center xl:items-start text-2xl">
             <div className="flex-2 w-full max-w-[50rem] xl:max-w-[unset] flex flex-col">
                 <p>
-                    Zunächst werden die Kanten im Bild erkannt. Bei jedem der dadurch entstehenden Bereiche wird anhand
-                    dessen
+                    Zunächst werden Kanten im Bild erkannt, also die Stellen, bei denen sich ein Übergang von eher schwarz zu eher schwarz befindet.
+                    Bei jedem der dadurch entstehenden Bereiche wird anhand dessen
                     Helligkeit entschieden, ob es sich um eine
                     <span className="mx-1 rounded-lg inline-block from-blue-700 to-[#0705d7] bg-gradient-to-br">
                         <span className="px-1 -py-0.5 rounded-md bg-white/60 text-black">Linie</span>
