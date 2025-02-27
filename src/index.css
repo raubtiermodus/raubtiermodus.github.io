@@ -300,7 +300,14 @@ h1 {
   }
 }
 html {
+  overflow: hidden
+}
+body {
   overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
 }
 #software {
   @apply text-xl;

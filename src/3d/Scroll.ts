@@ -58,8 +58,8 @@ export const useScroll = <T>(container: RefObject<HTMLElement | null> | null, zo
             }
         }
         h()
-        window.addEventListener("scroll", h)
-        return () => window.removeEventListener("scroll", h)
+        document.body.addEventListener("scroll", h)
+        return () => document.body.removeEventListener("scroll", h)
     }, []);
     return zone;
 }

@@ -4,7 +4,7 @@ import {ChevronRight, ExternalLink} from "lucide-react";
 export const Explanation: FC = () => {
     const [shown, setShown] = useState(false);
     useEffect(() => {
-        window.dispatchEvent(new Event("scroll"))
+        document.body.dispatchEvent(new Event("scroll"))
     }, [shown]);
     return <div
         className={`transition !p-0 bg-gradient-to-br red area ${shown ? "from-red-500 to-red-800 scroll-target !min-h-0" : ""}`}>

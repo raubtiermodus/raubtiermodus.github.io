@@ -14,8 +14,8 @@ export const useScrollTarget = () => {
             setActive(cur);
         }
         handler()
-        window.addEventListener("scroll", handler)
-        return () => window.removeEventListener("scroll", handler)
+        document.body.addEventListener("scroll", handler)
+        return () => document.body.removeEventListener("scroll", handler)
     }, []);
     return active;
 }
