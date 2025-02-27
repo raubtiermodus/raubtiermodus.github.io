@@ -6,5 +6,6 @@ export const setOpacity = (obj: Object3D, opacity: number) => {
         (mesh.material as MeshStandardMaterial).opacity = opacity;
         (mesh.material as MeshStandardMaterial).transparent = true;
     }
+    if(!obj.children) return;
     obj.children.forEach(child => setOpacity(child, opacity));
 }

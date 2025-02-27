@@ -46,7 +46,7 @@ export const Software: FC = () => {
                     <span className="mx-1 rounded-lg inline-block from-blue-400 to-[#05feff] bg-gradient-to-br">
                         <span className="px-1 -py-0.5 rounded-md bg-white/60 text-black">letzte Punkt</span>
                     </span>
-                    dieser Linie ist,
+                    des Wegs ist,
                     desto stärker wird gelenkt.
                 </p>
             </div>
