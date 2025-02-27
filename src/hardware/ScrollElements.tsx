@@ -1,6 +1,6 @@
-import {back, front, ScrollState, top, topback} from "./ScrollState.tsx";
-import {Tag} from "./Tag.tsx";
+import {Tag} from "../3d/Tag.tsx";
 import {AudioLines, BatteryFull, Camera, Hand, LoaderPinwheel, Rotate3d} from "lucide-react";
+import {ScrollZone, Transform} from "../3d/Scroll.ts";
 
 const distance = {
     icon: <AudioLines/>,
@@ -28,28 +28,43 @@ const tagsFront = <>
     </Tag>
     <Tag dir="t" subtitle="Linie erkennen" position={[.45, .3, 0]} {...camera} />
 </>
-export const elements: ScrollState[] = [
+export const top: Transform = [Math.PI / 2, 0, 0];
+export const topback: Transform = [Math.PI / 4, Math.PI / 4, 0];
+export const front: Transform = [Math.PI / 8, -Math.PI / 4, 0];
+export const back: Transform = [0, Math.PI / 4, 0];
+export const elements: ScrollZone<object>[] = [
     {
         scroll: 0,
-        rotation: top,
-        scale: [.8, .8, .8]
+        effects: {
+            rotation: top,
+            scale: [.8, .8, .8],
+            opacity: [1, 0, 0]
+        }
     },
     {
         scroll: .4,
-        rotation: top
+        effects: {
+            rotation: top,
+        }
     },
     {
         scroll: .6,
-        rotation: front,
+        effects: {
+            rotation: front,
+        },
         tags: tagsFront
     },
     {
         scroll: 1,
-        rotation: front
+        effects: {
+            rotation: front
+        }
     },
     {
         scroll: 1.3,
-        rotation: back,
+        effects: {
+            rotation: back,
+        },
         tags: <>
             <Tag title="OmniWheels" icon={<LoaderPinwheel/>} subtitle="Saubere Lenkung" manufacturer="Lego"
                  position={[-.2, -.25, .25]}>
@@ -64,11 +79,15 @@ export const elements: ScrollState[] = [
     },
     {
         scroll: 1.7,
-        rotation: back,
+        effects: {
+            rotation: back,
+        }
     },
     {
         scroll: 2,
-        rotation: topback,
+        effects: {
+            rotation: topback,
+        },
         tags: <>
             <Tag icon="/raspberry.svg" title="Raspberry Pi 5" subtitle="Haupt-Controller"
                  position={[.17, 0, .13]}>
@@ -83,15 +102,21 @@ export const elements: ScrollState[] = [
     },
     {
         scroll: 2.4,
-        rotation: topback,
+        effects: {
+            rotation: topback,
+        }
     },
     {
         scroll: 2.7,
-        rotation: top,
+        effects: {
+            rotation: top,
+        }
     },
     {
         scroll: 3.2,
-        rotation: top,
-        position: [2, 0, 0]
+        effects: {
+            position: [2, 0, 0],
+            rotation: top,
+        }
     }
 ]
