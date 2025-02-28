@@ -21,7 +21,7 @@ export const Box: FC<PropsWithChildren<{
                         </div>
                         {subtitle && <div className="subtitle opacity-70 text-sm mb-0.5">{subtitle}</div>}
                     </div>
-                    <div className="grow"></div>
+                    <div className="grow expander"></div>
                     {additional}
                     {link && <a href={link} className="mr-2" target="_blank">
                         <ExternalLink className="!w-5 !h-5" />

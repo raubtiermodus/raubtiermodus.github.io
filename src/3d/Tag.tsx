@@ -35,7 +35,7 @@ export const Tag: FC<ComponentProps<typeof Box> & {
         }}>
             <Box additional={<>
                 {(props.children || props.manufacturer) && <ChevronDown
-                    className={"!stroke-gray-500 !w-8 !h-8 transition hidden lg:block" + (expanded ? " -rotate-180" : "")}/>}
+                    className={"!stroke-gray-500 !w-8 !h-8 transition hidden xl:block" + (expanded ? " -rotate-180" : "")}/>}
             </>} {...props} className={`${props.className || ""} ${expanded ? " expanded " : ""} ${props.dir || "r"}`}
                  title={props.title}>
                 {expanded && props.manufacturer && <span className="opacity-80">{props.manufacturer}</span>}

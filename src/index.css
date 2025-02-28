@@ -7,6 +7,7 @@
   --fg: black;
   --bg: white;
   --fg-2: red;
+  --box-distance: 30px;
 }
 
 body {
@@ -145,19 +146,19 @@ h1 {
   user-select: none;
 }
 .box.r {
-  translate: 30px  -50%;
+  translate: var(--box-distance) -50%;
   transform-origin: center left;
 }
 .box.l {
-  translate: calc(-100% - 30px) -50%;
+  translate: calc(-100% - var(--box-distance)) -50%;
   transform-origin: center right;
 }
 .box.t {
-  translate: -50% calc(-100% - 30px);
+  translate: -50% calc(-100% - var(--box-distance));
   transform-origin: bottom center;
 }
 .box.b {
-  translate: -50% 30px;
+  translate: -50% var(--box-distance);
   transform-origin: top center;
 }
 
@@ -172,27 +173,27 @@ h1 {
 }
 .box.r::before {
   top: 50%;
-  left: -30px;
+  left: calc(-1 * var(--box-distance));
   height: 4px;
-  width: 30px;
+  width: var(--box-distance);
 }
 .box.l::before {
   top: 50%;
-  right: -30px;
+  right: calc(-1 * var(--box-distance));
   height: 4px;
-  width: 30px;
+  width: var(--box-distance);
 }
 .box.t::before {
   left: 50%;
-  bottom: -45px;
+  bottom: calc(-1 * var(--box-distance) - 15px);
   width: 4px;
-  height: 30px;
+  height: var(--box-distance);
 }
 .box.b::before {
   left: 50%;
-  top: -15px;
+  top: calc(-1 * var(--box-distance) + 15px);
   width: 4px;
-  height: 30px;
+  height: var(--box-distance);
 }
 
 @starting-style {
@@ -262,8 +263,8 @@ h1 {
   @apply stroke-red-800
 }
 
-@media (max-width: 1500px) {
-  #hardware .box:not(.expanded) .titles {
+@media (width < 80rem) {
+  #hardware .box:not(.expanded) .titles, #hardware .box:not(.expanded) .expander {
     display: none;
   }
   #hardware .box:not(.expanded) {
@@ -271,30 +272,32 @@ h1 {
     max-height: 70px;
   }
   #hardware .box svg, #hardware .box img {
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
+  }
+
+  :root {
+    --box-distance: 15px;
   }
   #hardware .box.expanded {
     cursor: unset;
     width: 80vw;
     max-width: 80vw;
     max-height: 80vh;
-    transform: translate(0, 0) !important;
     translate: -50% -50% !important;
-    left: 50vw !important;
-    top: 50vh !important;
-    position: fixed;
-    
+    transition: all .5s;
   }
   .tag-wrapper:has(.box.expanded) {
-    top: 0 !important;
-    left: 0 !important;
-    transform: none !important;
+    transform: translate(50vw, 50vh) !important;
+    transition: all .5s;
     z-index: 100000 !important;
   }
   .box.expanded::before {
-    width: 0;
-    height: 0;
+    opacity: 0;
+  }
+
+  #hardware .box.t::before {
+    bottom: -23px;
   }
 }
 html {
