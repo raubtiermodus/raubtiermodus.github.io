@@ -7,18 +7,23 @@ import {elements} from "./ScrollElements.tsx";
 import {useScroll} from "../3d/Scroll.ts";
 import {setOpacity} from "../3d/opacity.ts";
 import {Model} from "../3d/Model.tsx";
+import {ChevronsDown} from "lucide-react";
 
 export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scrollRef}) => {
     const meshRef = useRef<Mesh>(null);
     const primitive = useRef<Object3D>(null);
     const plate = useRef<Mesh>(null);
-    const titleRef = useRef<HTMLDivElement>(null);
+    const title = useRef<HTMLDivElement>(null);
+    const scrollHint = useRef<HTMLDivElement>(null);
     const zone = useScroll(scrollRef, elements, {
         position: (v) => primitive.current && primitive.current!.position.set(...v),
         rotation: (v) => meshRef.current!.rotation.set(...v),
         scale: (v) => meshRef.current!.scale.set(...v),
         opacity: (v) => {
-            if (titleRef.current) titleRef.current.style.opacity = `${v[0]}`
+            if (title.current) title.current.style.opacity = `${v[0]}`
+        },
+        scrollOpacity: (v) => {
+            if (scrollHint.current) scrollHint.current.style.opacity = `${v[0]}`
         },
         platePosition: (v) => {
             if (plate.current) plate.current.position.set(...v);
@@ -38,9 +43,11 @@ export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scro
                 {zone <= 1 && <Html occlude="blending"
                                     className="-translate-x-1/2 -translate-y-full w-max text-center select-none"
                                     position={[0, .27, 0]}>
-                    <div ref={titleRef}>
+                    <div ref={title}>
                         <h2 className="md:text-8xl text-5xl font-bold">Raubtier V2</h2>
                         <h3 className="md:text-3xl text-xl mt-1">Unser aktueller Roboter</h3>
+                        <h3 className="md:text-2xl justify-center mt-5 gap-2 opacity-80 flex items-center text-red-800">
+                            <ChevronsDown/> Bitte scrollen <ChevronsDown/></h3>
                     </div>
                 </Html>}
                 <group position={[0, -.07, 0]}>
@@ -60,6 +67,16 @@ export const Raubtier: FC<{ scrollRef: RefObject<HTMLElement | null> }> = ({scro
                                         <meshStandardMaterial color="black"/>
                                         <boxGeometry args={[100, .031, .1]}/>
                                     </mesh>
+                                    <Html position={[0, .0, .25]}>
+                                        <div className="-translate-x-1/2" ref={scrollHint}>
+                                            <div className="text-center">Nein, es ist noch nicht vorbei!</div>
+                                            <h3 className="flex items-center gap-2 text-2xl w-max text-red-800">
+                                                <ChevronsDown/>
+                                                Bitte weiterscrollen
+                                                <ChevronsDown/>
+                                            </h3>
+                                        </div>
+                                    </Html>
                                 </group>
                             </group>}
                             {elements[zone].tags}

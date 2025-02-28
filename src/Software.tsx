@@ -11,7 +11,8 @@ export const Software: FC = () => {
         <div className="flex flex-col-reverse xl:flex-row xl:gap-10 items-center xl:items-start text-2xl">
             <div className="flex-2 w-full max-w-[50rem] xl:max-w-[unset] flex flex-col">
                 <p>
-                    Zunächst werden Kanten im Bild erkannt, also die Stellen, bei denen sich ein Übergang von eher schwarz zu eher schwarz befindet.
+                    Zunächst werden Kanten im Bild erkannt, also die Stellen, bei denen sich ein Übergang von eher weiß
+                    zu eher schwarz befindet.
                     Bei jedem der dadurch entstehenden Bereiche wird anhand dessen
                     Helligkeit entschieden, ob es sich um eine
                     <span className="mx-1 rounded-lg inline-block from-blue-700 to-[#0705d7] bg-gradient-to-br">
@@ -39,7 +40,7 @@ export const Software: FC = () => {
                     </span>
                     links und rechts der Linie vor der Kreuzung
                     gesucht.
-                    Je nach dem wird dann der Verzweigung gefolgt, die im Vergleich zur bisherigen Linie am geradesten
+                    Je nachdem wird dann der Verzweigung gefolgt, die im Vergleich zur bisherigen Linie am geradesten
                     oder am stärksten nach rechts oder links verläuft.
                 </p>
                 <p>

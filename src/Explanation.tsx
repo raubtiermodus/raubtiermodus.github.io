@@ -9,13 +9,13 @@ export const Explanation: FC = () => {
     return <div
         className={`transition !p-0 bg-gradient-to-br red area ${shown ? "from-red-500 to-red-800 scroll-target !min-h-0" : ""}`}>
         <div
-            className={`transition flex items-center gap-2 cursor-pointer p-3 text-lg ${shown ? "border-b-1 border-black/10" : ""}`}
+            className={`transition flex items-center gap-5 cursor-pointer p-5 text-lg ${shown ? "border-b-1 border-black/10" : ""}`}
             onClick={() => {
                 setShown(!shown);
             }}>
-            <ChevronRight className={"transition " + (shown ? "rotate-90" : "")}/>
-            <div className="grow">
-                <span className="font-bold hidden sm:inline">Rescue Line&nbsp;</span>
+            <ChevronRight size={35} className={"transition " + (shown ? "rotate-90" : "")}/>
+            <div className="grow sm:text-2xl">
+                <div className="font-bold hidden sm:block">Rescue Line&nbsp;</div>
                 Was ist überhaupt die Aufgabe?
             </div>
             {shown && <a href="https://junior.robocup.org/wp-content/uploads/2024/01/RCJRescueLine2024-final.pdf" target="_blank"
@@ -41,7 +41,7 @@ export const Explanation: FC = () => {
                             Pro geschafftem Element erhält er eine bestimmte Anzahl von Punkten.
                         </p>
                         <p>
-                            Der Parcours besteht aus rechteckigen Platten und ist mit orangenen Checkpoints in
+                            Der Parcours besteht aus rechteckigen Platten und ist mit orangen Checkpoints in
                             verschiedene Bereiche aufgeteilt.
                             Wenn der Roboter nicht weiterkommt, darf er vom Teamkapitän zum letzten Checkpoint
                             zurückgesetzt werden.
@@ -59,7 +59,7 @@ export const Explanation: FC = () => {
                     <div>
                         <p>
                             Irgendwann erreicht der Roboter einen Raum, der drei Kugeln enthält: Zwei silberne und eine
-                            Schwarze.
+                            schwarze.
                             Sie stellen tote und lebendige Opfer dar, die der Roboter "retten" soll.
                             Dazu muss er die silbernen Kugeln (Überlebende) ins grüne Dreieck und die schwarze Kugel
                             (leider tot) ins rote Dreieck bringen.

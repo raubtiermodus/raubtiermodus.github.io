@@ -8,9 +8,12 @@ import {
     distTop,
     grab,
     gyro,
-    line, motor, motorBridge,
+    line,
+    motor,
+    motorBridge,
     powerbank,
-    raspberry, servos,
+    raspberry,
+    servos,
     wheels
 } from "./Tags.tsx";
 
@@ -98,7 +101,7 @@ export const elements: ScrollZone<object>[] = [
         effects: {
             rotation: [Math.PI * .2, Math.PI * -2, 0],
             platePosition: [0, 0, 0],
-            plateOpacity: [1, 0, 0]
+            plateOpacity: [1, 0, 0],
         }
     },
     {
@@ -107,7 +110,8 @@ export const elements: ScrollZone<object>[] = [
             position: [3, 0, 0],
             rotation: [Math.PI * .2, Math.PI * -2, 0],
             platePosition: [0, 0, 0],
-            plateOpacity: [1, 0, 0]
+            plateOpacity: [1, 0, 0],
+            scrollOpacity: [1, 0, 0]
         }
     }
 ]
