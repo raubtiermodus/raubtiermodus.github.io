@@ -24,8 +24,9 @@ export const Explanation: FC = () => {
                 <ExternalLink size={20} strokeWidth={3}/>
             </a>}
         </div>
-        <div className={`overflow-hidden transition-all ${shown ? "xl:max-h-[100rem] max-h-[300rem]" : "max-h-0"}`}>
-            <div className="my-6 mx-10 text-xl xl:flex gap-5 items-center w-full">
+        <div
+            className={`px-10 overflow-hidden transition-all ${shown ? "xl:max-h-[100rem] max-h-[300rem]" : "max-h-0"}`}>
+            <div className="my-6 text-xl xl:flex gap-5 items-center w-full">
                 <div className="flex-1">
                     <h2 className="text-3xl font-bold my-3">1. Linie folgen</h2>
                     <div>

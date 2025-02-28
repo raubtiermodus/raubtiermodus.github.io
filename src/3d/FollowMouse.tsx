@@ -1,19 +1,29 @@
 import {FC, PropsWithChildren, useEffect, useRef} from "react";
-import {Mesh} from "three";
+import {MathUtils, Mesh} from "three";
+import {useFrame} from "@react-three/fiber";
+import {Transform} from "./Scroll.ts";
 
 export const FollowMouse: FC<PropsWithChildren<{factor?: number}>> = ({children, factor}) => {
     factor = factor || .1;
-    const meshRef = useRef<Mesh>(null);
+    const mesh = useRef<Mesh>(null);
+    const next = useRef([0, 0, 0]);
+    
     useEffect(() => {
         const handler = (e: MouseEvent) => {
             const x = e.clientX / window.innerWidth - .5;
             const y = e.clientY / window.innerHeight - .5;
-            meshRef.current!.rotation.set(y * factor, x * factor, 0);
+            next.current = [y * factor, x * factor, 0]
         }
         window.addEventListener("mousemove", handler)
         return () => window.removeEventListener("mousemove", handler)
     }, []);
-    return <group ref={meshRef}>
+    useFrame((_, delta) => {
+        if (!mesh.current) return;
+        const newValue = mesh.current.rotation.toArray().slice(0, 3)
+            .map((e, i) => MathUtils.damp(e, next.current[i], 5, delta)) as Transform;
+        mesh.current.rotation.set(...newValue);
+    })
+    return <group ref={mesh}>
         {children}
     </group>
 }
