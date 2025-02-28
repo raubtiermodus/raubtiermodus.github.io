@@ -88,7 +88,8 @@ h1 {
   transition: opacity .3s;
   
 }
-.box img, .box svg {
+
+.box .icon, .box svg {
   @apply w-10 h-10 shrink-0;
 }
 .box.gold {
@@ -257,7 +258,8 @@ h1 {
 .box.expandable:hover:not(.expanded)::before {
   background-color: orange;
 }
-#hardware .box svg, #hardware .box img {
+
+#hardware .box svg, #hardware .box .icon {
   height: 40px;
   width: 40px;
   @apply stroke-red-800
@@ -271,7 +273,8 @@ h1 {
     max-width: 70px;
     max-height: 70px;
   }
-  #hardware .box svg, #hardware .box img {
+
+  #hardware .box svg, #hardware .box .icon {
     height: 25px;
     width: 25px;
   }

@@ -53,7 +53,7 @@ export const Software: FC = () => {
             </div>
             <img className="rounded-xl flex-1 w-full max-w-[50rem]" src="/line.jpg" alt=""/>
         </div>
-        <div className="lg:text-5xl text-3xl mb-12 mt-24 text-center">Erkennen der Kugeln</div>
+        <div className="lg:text-5xl text-3xl mb-12 mt-24 text-center">Kugeln erkennen</div>
         <div className="flex flex-col xl:flex-row gap-10 xl:items-start items-center text-2xl">
             <div className="flex-1 flex flex-col items-center max-w-[50rem] xl:max-w-[unset] w-full">
                 <img className="rounded-xl w-full" src="/edges.jpg" alt=""/>

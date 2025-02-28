@@ -4,7 +4,12 @@ import {Box} from "./Box.tsx";
 
 const data: { year: number; data: ReactNode[] }[] = [{
     year: 2023,
-    data: [<Box title="Gründung">Bau des ersten Roboters</Box>]
+    data: [<Box title="Gründung">
+        <div className="flex flex-col items-center gap-2">
+            <img src="/raubtierv1.jpg" alt="" className="rounded-xl"/>
+            Bau des ersten Roboters
+        </div>
+    </Box>]
 }, {
     year: 2024,
     data: [<Box title="Qualifikationsturnier" subtitle="Vöhringen, März">
@@ -26,13 +31,15 @@ const data: { year: number; data: ReactNode[] }[] = [{
 }]
 
 export const Erfolge: FC = () => {
-    return <div className="scroll-target text-xl lg:flex gap-5 !p-0 from-white via-yellow-50 to-yellow-200 bg-gradient-to-br" id="erfolge">
+    return <div
+        className="scroll-target text-xl lg:flex gap-5 !p-0 from-white via-yellow-50 to-yellow-200 bg-gradient-to-br"
+        id="erfolge">
         <div className="m-10 py-5">
             <div className="h-40 mt-10 md:ml-24">
                 <div className="text-5xl">Erfolge</div>
                 <div className="text-md">und Misserfolge</div>
             </div>
-            <div className="flex flex-col gap-5 justify-center flex-1">
+            <div className="flex flex-col gap-16 justify-center flex-1">
                 {data.map((e, i) => <div key={i} className="md:flex items-center gap-15">
                     <div className="font-bold opacity-50 text-2xl vertical md:text-center mb-2 md:mb-0">{e.year}</div>
                     <div className="flex lg:flex-row flex-col gap-5">
@@ -43,7 +50,7 @@ export const Erfolge: FC = () => {
         </div>
         <div className="relative w-full min-w-0 h-[40rem] lg:h-[unset] lg:pb-0">
             <Suspense>
-                <Pokal />
+                <Pokal/>
             </Suspense>
         </div>
     </div>
