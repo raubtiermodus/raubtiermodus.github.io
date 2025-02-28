@@ -1,8 +1,9 @@
 import {ComponentProps, FC, PropsWithChildren, Suspense, useEffect, useRef} from "react";
-import {useGLTF} from "@react-three/drei";
+import {Html, useGLTF} from "@react-three/drei";
 import {Object3D, Vector3} from "three";
 import {useFrame} from "@react-three/fiber";
 import {Object3DProps} from "../../global";
+import {Boxes} from "lucide-react";
 
 const scale = new Vector3(1, 1, 1);
 const position = new Vector3(0, 0, 0);
@@ -28,14 +29,13 @@ const ModelMain: FC<PropsWithChildren<Object3DProps & { file: string; }>> = ({fi
     </group>
 }
 const LoadingText: FC = () => {
-    //return false && <Html>
-    //    <div
-    //        className="-translate-x-1/2 from-red-900 to-black bg-gradient-to-br w-max flex items-center gap-2 text-white p-2 rounded-md">
-    //        <Boxes/>
-    //        3D-Modell wird geladen
-    //    </div>
-    //</Html>
-    return null;
+    return <Html>
+        <div
+            className="-translate-x-1/2 from-red-900 to-black bg-gradient-to-br w-max flex items-center gap-2 text-white p-2 rounded-md loader">
+            <Boxes/>
+            3D-Modell wird geladen
+        </div>
+    </Html>
 }
 export const Model: FC<ComponentProps<typeof ModelMain>> = (props) => {
     return <Suspense fallback={<LoadingText/>}>
