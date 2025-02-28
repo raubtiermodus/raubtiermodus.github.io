@@ -4,8 +4,7 @@ import {Box} from "./Box.tsx";
 
 const data: { year: number; data: ReactNode[] }[] = [{
     year: 2023,
-    data: [<Box title="Gründung" subtitle="Januar">Bau des ersten, <span
-        className="line-through opacity-50">schlechten</span> Roboters</Box>]
+    data: [<Box title="Gründung">Bau des ersten Roboters</Box>]
 }, {
     year: 2024,
     data: [<Box title="Qualifikationsturnier" subtitle="Vöhringen, März">
