@@ -85,7 +85,8 @@ h1 {
   width: max-content;
   */
   z-index: 2;
-  transition: opacity .3s;
+  transition: all .3s;
+  will-change: transform;
   
 }
 
@@ -147,19 +148,19 @@ h1 {
   user-select: none;
 }
 .box.r {
-  translate: var(--box-distance) -50%;
+  transform: translate(var(--box-distance), -50%);
   transform-origin: center left;
 }
 .box.l {
-  translate: calc(-100% - var(--box-distance)) -50%;
+  transform: translate(calc(-100% - var(--box-distance)), -50%);
   transform-origin: center right;
 }
 .box.t {
-  translate: -50% calc(-100% - var(--box-distance));
+  transform: translate(-50%, calc(-100% - var(--box-distance)));
   transform-origin: bottom center;
 }
 .box.b {
-  translate: -50% var(--box-distance);
+  transform: translate(-50%, var(--box-distance));
   transform-origin: top center;
 }
 
@@ -167,7 +168,7 @@ h1 {
   @apply bg-red-800;
   content: '';
   position: absolute;
-  translate: 0 -50%;
+  transform: translate(0, -50%);
   border-radius: 10px;
   box-shadow: 0 0 0 2px white;
   z-index: 1;
@@ -287,8 +288,7 @@ h1 {
     width: 80vw;
     max-width: 80vw;
     max-height: 80vh;
-    translate: -50% -50% !important;
-    transition: all .5s;
+    transform: translate(-50%, -50%) !important;
   }
   .tag-wrapper:has(.box.expanded) {
     transform: translate(50vw, 50vh) !important;

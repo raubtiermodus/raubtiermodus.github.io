@@ -20,7 +20,7 @@ export const FollowMouse: FC<PropsWithChildren<{factor?: number}>> = ({children,
     useFrame((_, delta) => {
         if (!mesh.current) return;
         const newValue = mesh.current.rotation.toArray().slice(0, 3)
-            .map((e, i) => MathUtils.damp(e, next.current[i], 5, delta)) as Transform;
+            .map((e, i) => MathUtils.damp(e as number, next.current[i], 5, delta)) as Transform;
         mesh.current.rotation.set(...newValue);
     })
     return <group ref={mesh}>
