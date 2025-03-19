@@ -25,8 +25,8 @@ const data: { year: number; data: ReactNode[] }[] = [{
     year: 2025,
     data: [<Box title="Qualifikationsturnier" className="gold" subtitle="Vöhringen, Februar">
         <div className="text-center my-5">1. Platz</div>
-    </Box>, <Box title="Deutsche Meisterschaft" className="unknown" subtitle="Nürnberg, März">
-        <div className="text-center my-5">Wird hoffentlich auch gut!</div>
+    </Box>, <Box title="Deutsche Meisterschaft" subtitle="Nürnberg, März">
+        <div className="text-center my-5">6. Platz</div>
     </Box>]
 }]
 
